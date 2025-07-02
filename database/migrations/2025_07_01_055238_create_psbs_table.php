@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('deskripsi')->nullable(false);
             $table->string('komentar')->nullable(false);
             $table->integer('tahun')->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

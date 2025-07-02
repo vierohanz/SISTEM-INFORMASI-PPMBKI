@@ -22,6 +22,6 @@ class booking extends Model
 
     public function layanan_tamu()
     {
-        return $this->belongsTo(layanan_tamu::class);
+        return $this->belongsTo(layanan_tamu::class, 'id_layanan_tamu');
     }
 }

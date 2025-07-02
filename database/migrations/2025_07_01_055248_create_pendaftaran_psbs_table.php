@@ -58,6 +58,7 @@ return new class extends Migration
             $table->string('upload_biodata_calon_santri');
             $table->string('upload_bukti_diterima_kuliah');
             $table->string('upload_foto_setengah_badan');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

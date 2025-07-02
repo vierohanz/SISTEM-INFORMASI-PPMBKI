@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('layanan_tamu', function (Blueprint $table) {
             $table->id();
+            $table->string('nama')->nullable(false);
             $table->string('kapasitas')->nullable(false);
-            $table->string('foto')->nullable(false);
+            $table->string('foto')->nullable(true);
             $table->string('deskripsi')->nullable(false);
             $table->enum('status', ['Aktif', 'Tidak Aktif'])->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('id_parent')->references('id')->on('komentar_artikel')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('nama')->nullable(false);
             $table->string('konten')->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisi', function (Blueprint $table) {
+        Schema::create('failed_import_rows', function (Blueprint $table) {
             $table->id();
-            $table->string('foto')->nullable(true);
-            $table->string('nama_divisi')->nullable(false);
-            $table->string('deskripsi')->nullable(false);
-            $table->softDeletes();
+            $table->json('data');
+            $table->foreignId('import_id')->constrained()->cascadeOnDelete();
+            $table->text('validation_error')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisi');
+        Schema::dropIfExists('failed_import_rows');
     }
 };

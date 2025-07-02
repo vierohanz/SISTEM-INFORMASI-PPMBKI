@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_lengkap')->nullable(false);
             $table->string('asal_kelompok');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

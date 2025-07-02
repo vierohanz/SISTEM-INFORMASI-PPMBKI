@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,9 +28,16 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile()
+            ->databaseNotifications()
+            ->spa(true)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex("#A4DD06"),
             ])
+            ->favicon(asset('images/logoppm.png'))
+            ->homeUrl(url('/'))
+            ->darkModeBrandLogo(asset('images/logoppm_dark.png'))
+            ->brandLogo(asset('images/logoppm.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -39,6 +47,9 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+            ])
+            ->plugins([
+                FilamentFullCalendarPlugin::make()
             ])
             ->middleware([
                 EncryptCookies::class,

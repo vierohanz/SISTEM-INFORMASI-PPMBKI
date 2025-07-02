@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisi', function (Blueprint $table) {
-            $table->id();
-            $table->string('foto')->nullable(true);
-            $table->string('nama_divisi')->nullable(false);
-            $table->string('deskripsi')->nullable(false);
-            $table->softDeletes();
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('type');
+            $table->morphs('notifiable');
+            $table->json('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisi');
+        Schema::dropIfExists('notifications');
     }
 };

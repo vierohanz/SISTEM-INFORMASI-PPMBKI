@@ -16,11 +16,13 @@ return new class extends Migration
             $table->integer('id_layanan_tamu');
             $table->foreign('id_layanan_tamu')->references('id')->on('layanan_tamu')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('nama_tamu')->nullable(false);
+            $table->string('phone')->nullable(false);
             $table->date('tanggal_datang')->nullable(false);
             $table->date('tanggal_keluar')->nullable(false);
             $table->integer('kuantitas')->nullable(false);
             $table->string('deskripsi')->nullable(false);
-            $table->enum('status', ['Aktif', 'Tidak Aktif'])->nullable(false);
+            $table->enum('status', ['Pending', 'Diterima', 'Ditolak'])->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

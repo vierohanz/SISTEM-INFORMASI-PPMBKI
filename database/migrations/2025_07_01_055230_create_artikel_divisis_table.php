@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_upload')->nullable(false);
             $table->string('deskripsi')->nullable(false);
             $table->string('komentar')->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
