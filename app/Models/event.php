@@ -19,12 +19,19 @@ class event extends Model
     public $incrementing = true;
     public $timestamps = true;
     protected $guarded = [];
+    protected $casts = [
+        'foto' => 'json',
+    ];
     public function divisi()
     {
-        return $this->belongsTo(divisi::class);
+        return $this->belongsTo(divisi::class, 'id_divisi');
     }
     public function pendaftaran_event()
     {
         return $this->hasMany(pendaftaran_event::class, 'id_event');
+    }
+    public function komentar_event()
+    {
+        return $this->hasMany(komentar_event::class, 'id_event');
     }
 }

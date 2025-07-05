@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('kota_lahir');
             $table->date('tanggal_lahir');
             $table->string('kota');
+            $table->string('phone');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->integer('anak_keberapa');
             $table->string('jumlah_saudara');
-            $table->integer('phone');
             $table->string('instagram');
             $table->string('kampus');
             $table->string('jalur_masuk');
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->enum('bawa_kendaraan', ['Iya', 'Tidak']);
             $table->enum('kendaraan', ['Motor', 'Mobil', 'Lainnya']);
             $table->string('deskripsi_diri');
-            $table->string('latar_belakang_belakang');
+            $table->string('latar_belakang_keluarga');
             $table->string('tempat_tinggal');
             $table->string('alamat');
             $table->integer('pos');
@@ -51,13 +51,14 @@ return new class extends Migration
             $table->string('phone_ibu');
             $table->string('nama_wali');
             $table->string('pekerjaan_wali');
+            $table->string('phone_wali');
             $table->string('prestasi');
             $table->string('minat');
             $table->enum('bakat', ['Desain', 'Teknologi', 'Pendidikan', 'Olahraga']);
             $table->enum('pengalaman_sekolah', ['OSIS', 'Kepanitiaan', 'Lainnya']);
-            $table->string('upload_biodata_calon_santri');
-            $table->string('upload_bukti_diterima_kuliah');
-            $table->string('upload_foto_setengah_badan');
+            $table->json('upload_biodata_calon_santri');
+            $table->json('upload_bukti_diterima_kuliah');
+            $table->json('upload_foto_setengah_badan');
             $table->softDeletes();
             $table->timestamps();
         });

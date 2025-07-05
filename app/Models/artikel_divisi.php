@@ -19,8 +19,11 @@ class artikel_divisi extends Model
     public $incrementing = true;
     public $timestamps = true;
     protected $guarded = [];
+    protected $casts = [
+        'foto' => 'json',
+    ];
     public function divisi()
     {
-        return $this->belongsTo(divisi::class);
+        return $this->belongsTo(divisi::class, 'id_divisi');
     }
 }

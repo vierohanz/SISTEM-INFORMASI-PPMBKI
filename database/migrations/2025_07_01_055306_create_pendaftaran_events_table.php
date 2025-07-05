@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_event')->references('id')->on('event')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('nama_lengkap')->nullable(false);
             $table->string('asal_kelompok');
+            $table->string('phone');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->softDeletes();
             $table->timestamps();

@@ -19,9 +19,13 @@ class pendaftaran_psb extends Model
     public $incrementing = true;
     public $timestamps = true;
     protected $guarded = [];
-
+    protected $casts = [
+        'upload_biodata_calon_santri' => 'json',
+        'upload_bukti_diterima_kuliah' => 'json',
+        'upload_foto_setengah_badan' => 'json',
+    ];
     public function psb()
     {
-        return $this->belongsTo(psb::class);
+        return $this->belongsTo(psb::class, 'id_psb');
     }
 }

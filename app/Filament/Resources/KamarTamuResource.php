@@ -90,6 +90,9 @@ class KamarTamuResource extends Resource
                         FileUpload::make('foto')
                             ->image()
                             ->disk('public')
+                            ->maxSize(1000)
+                            ->visibility('public')
+                            ->reorderable()
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '16:9',

@@ -42,6 +42,7 @@ class DivisiResource extends Resource
                         ->image()
                         ->columnSpan(1)
                         ->disk('public')
+                        ->maxSize(1000)
                         ->imageEditor(),
                     TextInput::make('nama_divisi')
                         ->label('Divisi')

@@ -22,6 +22,16 @@ class komentar_event extends Model
 
     public function event()
     {
-        return $this->belongsTo(event::class);
+        return $this->belongsTo(event::class, 'id_event');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'id_parent');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(self::class, 'id_parent');
     }
 }

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('id_divisi')->nullable(false);
             $table->foreign('id_divisi')->references('id')->on('divisi')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('judul')->nullable(false);
+            $table->json('foto')->nullable(true);
             $table->date('tanggal_upload')->nullable(false);
-            $table->string('deskripsi')->nullable(false);
-            $table->string('komentar')->nullable(false);
+            $table->longText('deskripsi')->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

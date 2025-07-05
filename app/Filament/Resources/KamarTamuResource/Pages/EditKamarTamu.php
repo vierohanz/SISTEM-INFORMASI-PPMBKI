@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class EditKamarTamu extends EditRecord
 {
     protected static string $resource = KamarTamuResource::class;
-
     protected function getHeaderActions(): array
     {
         return [

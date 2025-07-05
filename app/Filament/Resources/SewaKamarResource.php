@@ -56,6 +56,7 @@ class SewaKamarResource extends Resource
                                     modifyQueryUsing: fn($query) => $query->where('status', 'Aktif')
                                 )
                                 ->required()
+                                ->native(false)
                                 ->live(),
 
                             TextInput::make('nama_tamu')
@@ -237,13 +238,12 @@ class SewaKamarResource extends Resource
                         default => 'gray',
                     })
                     ->toggleable(),
-
                 TextColumn::make('deskripsi')
                     ->label('Deskripsi')
                     ->limit(50)
-                    ->wrap()
                     ->tooltip(fn($record) => $record->deskripsi)
                     ->toggleable(),
+
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

@@ -20,8 +20,18 @@ class komentar_artikel extends Model
     public $timestamps = true;
     protected $guarded = [];
 
-    public function event()
+    public function artikel_divisi()
     {
-        return $this->belongsTo(artikel_divisi::class);
+        return $this->belongsTo(artikel_divisi::class, 'id_artikel_divisi');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'id_parent');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(self::class, 'id_parent');
     }
 }
