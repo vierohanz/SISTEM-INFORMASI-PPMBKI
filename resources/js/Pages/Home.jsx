@@ -1,6 +1,4 @@
-import {NavLink} from "react-router-dom";
-
-export default function Home() {
+export default function Home({ url }) {
     return (
         <>
         <div>
@@ -12,31 +10,33 @@ export default function Home() {
                         </a>
                     </div>
                     <div className="flex gap-10">
-                        <a href="" className="">
-                            <button className="hover:underline-blue transition duration-300 ease-in-out">
-                                Home
-                            </button>
-                        </a>
-                        <a href="">
-                            <button className="hover:underline-blue transition duration-300 ease-in-out">
-                                Event
-                            </button>
-                        </a>
-                        <a href="">
-                            <button className="hover:underline-blue transition duration-300 ease-in-out">
-                                Artikel
-                            </button>
-                        </a>
-                        <a href="">
-                            <button className="hover:underline-blue transition duration-300 ease-in-out">
-                                Layanan Tamu
-                            </button>
-                        </a>
-                        <a href="">
-                            <button className="hover:underline-blue transition duration-300 ease-in-out">
-                                Tentang Kami
-                            </button>
-                        </a>
+                        <ul className="flex gap-10">
+                            <li>
+                                <a href="/" className={`text-base text-gray-900 ${url === "/" ? "text-black font-semibold" : ""}`}>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/event" className={`text-base text-gray-900 ${url === "/santri" ? "text-black font-semibold" : ""}`}>
+                                    Event
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/artikel" className={`text-base text-gray-900 ${url === "/artikel" ? "text-black font-semibold" : ""}`}>
+                                    Artikel
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/layanan-tamu" className={`text-base text-gray-900 ${url === "/layanan-tamu" ? "text-black font-semibold" : ""}`}>
+                                    Layanan Tamu
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tentang-kami" className={`text-base text-gray-900 ${url === "/tentang-kami" ? "text-black font-semibold" : ""}`}>
+                                    Tentang Kami
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className=" p-4 m-4 rounded-lg">
@@ -44,7 +44,7 @@ export default function Home() {
                         <div className="flex flex-col w-1/2 items-start justify-start">
                             <h1 className="flex text-black text-6xl gap-2 font-bold">Selamat Datang {<h2 className="font-light">di</h2>}</h1>
                             <h2 className="text-black font-light text-6xl">PPM BKI Semarang</h2>
-                            <div className="w-3/4 h-1 bg-green-500 rounded-full mx-auto my-10"/>
+                            <div className="w-3/4 h-1 bg-green-500 rounded-full my-10"/>
                             <div className="flex md:mr-65">
                                 <p className="text-black font-semibold text-lg">PPM BKI Semarang Berkomitmen Mencetak Generasi Unggul, Profesional Religius, dan Berakhlakul Karimah</p>
                             </div>
