@@ -344,8 +344,7 @@ class PendaftaranPsbResource extends Resource
                 SelectFilter::make('id_psb')
                     ->label('Filter PSB')
                     ->relationship('psb', 'judul')
-                    ->searchable()
-                    ->preload(),
+                    ->native(false)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

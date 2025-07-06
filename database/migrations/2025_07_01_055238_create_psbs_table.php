@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('id_divisi')->nullable(false);
             $table->foreign('id_divisi')->references('id')->on('divisi')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('judul')->nullable(false);
-            $table->json('foto')->nullable(false);
+            $table->json('foto')->nullable(true);
             $table->date('tanggal_upload')->nullable(false);
             $table->longText('deskripsi')->nullable(false);
             $table->enum('status', ['Aktif', 'Tidak Aktif'])->nullable(false);

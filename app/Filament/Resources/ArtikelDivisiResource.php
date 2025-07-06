@@ -26,6 +26,8 @@ use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Panel;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TrashedFilter;
 
 class ArtikelDivisiResource extends Resource
 {
@@ -120,7 +122,13 @@ class ArtikelDivisiResource extends Resource
                     ])
                 ])->space(3),
             ])
-            ->filters([])
+            ->filters([
+                TrashedFilter::make(),
+                SelectFilter::make('divisi_id')
+                    ->label('Filter Divisi')
+                    ->relationship('divisi', 'nama_divisi') // relasi dan field label-nya
+                    ->native(false)
+            ])
             ->paginated([6, 12, 24, 'all'])
             ->contentGrid([
                 'md' => 2,

@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: API Sistem Informasi PPM BKI
+  version: 1.0.0
+  description: API resmi untuk Sistem Informasi PPM BKI. Menyediakan akses ke berbagai data seperti artikel, event, pendaftaran, dan informasi santri.
+
+paths:
+  /article:
+    get:
+      summary: Ambil semua artikel
+      operationId: getAllArticles
+      tags:
+        - Artikel
+      responses:
+        "200":
+          description: Daftar artikel berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtikelListResponse"
+
+  /article/latest:
+    get:
+      summary: Ambil 6 artikel terbaru
+      operationId: getLatestArticles
+      tags:
+        - Artikel
+      responses:
+        "200":
+          description: Artikel terbaru berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtikelListResponse"
+
+  /article/{id}:
+    get:
+      summary: Ambil detail artikel berdasarkan ID
+      operationId: getArticleById
+      tags:
+        - Artikel
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Detail artikel berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArtikelDetailResponse"
+        "404":
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /event:
+    get:
+      summary: Ambil semua event
+      operationId: getAllEvents
+      tags:
+        - Event
+      responses:
+        "200":
+          description: Daftar event berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventListResponse"
+
+  /event/latest:
+    get:
+      summary: Ambil 6 event terbaru
+      operationId: getLatestEvents
+      tags:
+        - Event
+      responses:
+        "200":
+          description: Event terbaru berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventListResponse"
+
+  /event/{id}:
+    get:
+      summary: Ambil detail event berdasarkan ID
+      operationId: getEventById
+      tags:
+        - Event
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Detail event berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventDetailResponse"
+        "404":
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    ArtikelResource:
+      type: object
+      properties:
+        nama_divisi:
+          type: string
+          example: HSC
+        foto:
+          type: string
+          example: uploads/foto/artikel1.png
+        judul:
+          type: string
+          example: Kegiatan Pesantren Ramadan
+        tanggal_upload:
+          type: string
+          format: date
+          example: 2025-07-05
+        deskripsi:
+          type: string
+          example: Ini adalah deskripsi kegiatan Ramadan...
+
+    ArtikelListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Data artikel berhasil diambil
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ArtikelResource"
+
+    ArtikelDetailResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Detail artikel berhasil diambil
+        data:
+          $ref: "#/components/schemas/ArtikelResource"
+
+    EventResource:
+      type: object
+      properties:
+        nama_divisi:
+          type: string
+          example: Event Organizer
+        foto:
+          type: string
+          example: uploads/foto/event1.png
+        judul:
+          type: string
+          example: Seminar Literasi Digital
+        tanggal_upload:
+          type: string
+          format: date
+          example: 2025-06-20
+        deskripsi:
+          type: string
+          example: Seminar ini bertujuan meningkatkan literasi digital santri...
+        status:
+          type: string
+          example: Aktif
+        tahun:
+          type: integer
+          example: 2025
+
+    EventListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Data event berhasil diambil
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/EventResource"
+
+    EventDetailResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Detail event berhasil diambil
+        data:
+          $ref: "#/components/schemas/EventResource"
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Data tidak ditemukan
