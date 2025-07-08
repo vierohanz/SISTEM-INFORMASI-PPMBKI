@@ -3,11 +3,15 @@
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PSBController;
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return inertia('Home');
+    return inertia::render('Index');
 });
+
+Route::get('/{any}', function () {
+    return Inertia::render('Index');
+})->where('any', '.*');
 
 // //Article
 // Route::get('/article', [ArtikelController::class, 'index'])->name('article.index');
