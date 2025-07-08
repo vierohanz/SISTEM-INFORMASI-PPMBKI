@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PSBController;
+use App\Http\Controllers\TamuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,6 @@ Route::get('/psb/{id}', [PSBController::class, 'showAsId'])->name('psb.show');
 Route::post('/psb/{id}/pendaftaran', [PSBController::class, 'storePendaftaran']);
 
 //Layanan Tamu
+Route::get('/tamu', [TamuController::class, 'index'])->name('tamu.index');
+Route::get('/tamu/{id}', [TamuController::class, 'show'])->name('tamu.show');
+Route::post('/tamu/{id}/booking', [TamuController::class, 'store'])->name('booking.store');

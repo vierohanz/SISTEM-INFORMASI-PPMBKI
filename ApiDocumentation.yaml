@@ -4,6 +4,10 @@ info:
   version: 1.0.0
   description: API resmi untuk Sistem Informasi PPM BKI. Menyediakan akses ke berbagai data seperti artikel, event, pendaftaran, dan informasi santri.
 
+servers:
+  - url: https://api.ppmbki.ponpes.id
+    description: Production Server
+
 paths:
   /article:
     get:
@@ -113,8 +117,246 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /psb:
+    get:
+      summary: Ambil semua data PSB
+      operationId: getAllPSB
+      tags:
+        - PSB
+      responses:
+        "200":
+          description: Data PSB berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PSBListResponse"
+
+  /psb/latest:
+    get:
+      summary: Ambil 6 data PSB terbaru
+      operationId: getLatestPSB
+      tags:
+        - PSB
+      responses:
+        "200":
+          description: PSB terbaru berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PSBListResponse"
+
+  /psb/{id}:
+    get:
+      summary: Ambil detail PSB berdasarkan ID
+      operationId: getPSBById
+      tags:
+        - PSB
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Detail PSB berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PSBDetailResponse"
+        "404":
+          description: PSB tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /psb/{id}/pendaftaran:
+    post:
+      summary: Submit pendaftaran PSB berdasarkan ID
+      operationId: submitPSBPendaftaran
+      tags:
+        - PSB
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PSBRegistrationRequest"
+      responses:
+        "200":
+          description: Pendaftaran berhasil disimpan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "403":
+          description: Pendaftaran tidak tersedia
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Validasi gagal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorResponse"
+
+  /tamu:
+    get:
+      summary: Ambil daftar layanan tamu aktif
+      tags: [Layanan Tamu]
+      responses:
+        "200":
+          description: Daftar layanan tamu aktif
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Data tamu aktif berhasil diambil
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Tamu"
+
+  /tamu/{id}:
+    get:
+      summary: Ambil detail layanan tamu berdasarkan ID
+      tags: [Layanan Tamu]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Detail tamu ditemukan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Detail kamar aktif berhasil diambil
+                  data:
+                    $ref: "#/components/schemas/Tamu"
+        "404":
+          description: Tamu tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /tamu/{id}/booking:
+    post:
+      summary: Booking layanan tamu
+      tags: [Booking]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nama_tamu
+                - phone
+                - tanggal_datang
+                - tanggal_keluar
+                - kuantitas
+                - deskripsi
+              properties:
+                nama_tamu:
+                  type: string
+                  example: Rais Hannan
+                phone:
+                  type: string
+                  example: 08123456789
+                tanggal_datang:
+                  type: string
+                  format: date
+                  example: 2025-07-20
+                tanggal_keluar:
+                  type: string
+                  format: date
+                  example: 2025-07-22
+                kuantitas:
+                  type: integer
+                  example: 3
+                deskripsi:
+                  type: string
+                  example: Kunjungan dari keluarga santri
+      responses:
+        "200":
+          description: Booking berhasil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Booking berhasil disimpan dengan status Pending
+        "403":
+          description: Layanan tidak aktif
+        "409":
+          description: Tanggal booking sudah dibooking
+        "422":
+          description: Validasi gagal
+
 components:
   schemas:
+    Tamu:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nama:
+          type: string
+          example: Kamar A
+        deskripsi:
+          type: string
+          example: Kamar tamu untuk keluarga
+        status:
+          type: string
+          example: Aktif
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Tamu tidak ditemukan
     ArtikelResource:
       type: object
       properties:
@@ -213,7 +455,221 @@ components:
         data:
           $ref: "#/components/schemas/EventResource"
 
-    ErrorResponse:
+    PSBItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        id_divisi:
+          type: object
+          properties:
+            nama_divisi:
+              type: string
+              example: HSC
+        judul:
+          type: string
+          example: Pendaftaran Santri Baru
+        foto:
+          type: string
+          example: uploads/foto/psb1.jpg
+        tanggal_upload:
+          type: string
+          format: date
+          example: 2025-07-01
+        status:
+          type: string
+          example: Aktif
+        tahun:
+          type: string
+          example: 2025
+        deskripsi:
+          type: string
+          example: Pendaftaran santri baru angkatan 2025...
+
+    PSBListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Data PSB berhasil diambil
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PSBItem"
+
+    PSBDetailResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Detail PSB berhasil diambil
+        data:
+          $ref: "#/components/schemas/PSBItem"
+
+    PSBRegistrationRequest:
+      type: object
+      required:
+        [
+          email,
+          nama_lengkap,
+          kota_lahir,
+          tanggal_lahir,
+          kota,
+          phone,
+          jenis_kelamin,
+          anak_keberapa,
+          jumlah_saudara,
+          kampus,
+          jalur_masuk,
+          beasiswa,
+          jurusan,
+          angkatan,
+          tau_ppm_dari_mana,
+          bawa_kendaraan,
+          kendaraan,
+          deskripsi_diri,
+          latar_belakang_keluarga,
+          tempat_tinggal,
+          alamat,
+          pos,
+          golongan_darah,
+          tinggi_badan,
+          berat_badan,
+          riwayat_kesehatan,
+          nama_ayah,
+          pekerjaan_ayah,
+          phone_ayah,
+          nama_ibu,
+          pekerjaan_ibu,
+          phone_ibu,
+          nama_wali,
+          pekerjaan_wali,
+          phone_wali,
+          prestasi,
+          minat,
+          bakat,
+          pengalaman_sekolah,
+          upload_biodata_calon_santri,
+          upload_bukti_diterima_kuliah,
+          upload_foto_setengah_badan,
+        ]
+      properties:
+        email:
+          type: string
+          format: email
+        nama_lengkap:
+          type: string
+        nama_panggilan:
+          type: string
+        kota_lahir:
+          type: string
+        tanggal_lahir:
+          type: string
+          format: date
+        kota:
+          type: string
+        phone:
+          type: string
+        jenis_kelamin:
+          type: string
+          enum: [Laki-laki, Perempuan]
+        anak_keberapa:
+          type: integer
+        jumlah_saudara:
+          type: string
+        instagram:
+          type: string
+        kampus:
+          type: string
+        jalur_masuk:
+          type: string
+        beasiswa:
+          type: string
+          enum: [Iya, Tidak]
+        jurusan:
+          type: string
+        angkatan:
+          type: string
+        tau_ppm_dari_mana:
+          type: string
+        bawa_kendaraan:
+          type: string
+          enum: [Iya, Tidak]
+        kendaraan:
+          type: string
+          enum: [Motor, Mobil, Lainnya]
+        deskripsi_diri:
+          type: string
+        latar_belakang_keluarga:
+          type: string
+        tempat_tinggal:
+          type: string
+        alamat:
+          type: string
+        pos:
+          type: integer
+        golongan_darah:
+          type: string
+          enum: [A, B, AB, O]
+        tinggi_badan:
+          type: string
+        berat_badan:
+          type: string
+        riwayat_kesehatan:
+          type: string
+        nama_ayah:
+          type: string
+        pekerjaan_ayah:
+          type: string
+        phone_ayah:
+          type: string
+        nama_ibu:
+          type: string
+        pekerjaan_ibu:
+          type: string
+        phone_ibu:
+          type: string
+        nama_wali:
+          type: string
+        pekerjaan_wali:
+          type: string
+        phone_wali:
+          type: string
+        prestasi:
+          type: string
+        minat:
+          type: string
+        bakat:
+          type: string
+          enum: [Desain, Teknologi, Pendidikan, Olahraga]
+        pengalaman_sekolah:
+          type: string
+          enum: [OSIS, Kepanitiaan, Lainnya]
+        upload_biodata_calon_santri:
+          type: string
+        upload_bukti_diterima_kuliah:
+          type: string
+        upload_foto_setengah_badan:
+          type: string
+
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Pendaftaran berhasil disimpan
+
+    ValidationErrorResponse:
       type: object
       properties:
         success:
@@ -221,4 +677,10 @@ components:
           example: false
         message:
           type: string
-          example: Data tidak ditemukan
+          example: Validasi gagal
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string

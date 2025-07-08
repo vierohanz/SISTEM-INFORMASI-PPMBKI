@@ -14,6 +14,12 @@ class TamuResources extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [];
+        return [
+            'nama_kamar' => $this->nama,
+            'kapasitas' => $this->kapasitas,
+            'status' => $this->status,
+            'deskripsi' => $this->deskripsi,
+            'foto' => $this->foto,
+        ];
     }
 }
