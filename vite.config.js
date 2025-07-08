@@ -12,6 +12,7 @@ export default defineConfig({
         react(),
     ],
     resolve: (name) => {
+        console.log("Trying to load page:", name);
         const pages = import.meta.glob("./Pages/**/*.jsx", { eager: true });
         return pages[`./Pages/${name}.jsx`];
     },
