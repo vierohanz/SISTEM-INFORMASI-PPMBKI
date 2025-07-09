@@ -61,15 +61,15 @@ class EventDivisiResource extends Resource
                         TextInput::make('judul')
                             ->label('Judul')
                             ->required(),
-                        FileUpload::make('foto')
-                            ->label('Foto')
-                            ->maxSize(1000)
-                            ->maxFiles(3)
-                            ->directory('uploads/foto')
-                            ->image()
-                            ->multiple()
-                            ->reorderable()
-                            ->required(),
+                        // FileUpload::make('foto')
+                        //     ->label('Foto')
+                        //     ->maxSize(1000)
+                        //     ->maxFiles(3)
+                        //     ->directory('uploads/foto')
+                        //     ->image()
+                        //     ->multiple()
+                        //     ->reorderable()
+                        //     ->required(),
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
@@ -155,7 +155,6 @@ class EventDivisiResource extends Resource
                                 'Tidak Aktif' => 'danger',
                                 default => 'gray',
                             }),
-
                     ])->space(1),
                 ])->space(3),
             ])
