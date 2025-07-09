@@ -96,13 +96,13 @@ class ArtikelDivisiResource extends Resource
             ->columns([
                 Stack::make([
                     // Gambar thumbnail (hanya tampil jika ada)
-                    ImageColumn::make('foto')
-                        ->label('')
-                        ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
-                        ->disk('public')
-                        ->height(180)
-                        ->width('100%')
-                        ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
+                    // ImageColumn::make('foto')
+                    //     ->label('')
+                    //     ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
+                    //     ->disk('public')
+                    //     ->height(180)
+                    //     ->width('100%')
+                    //     ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
 
                     // Title dan URL
                     Stack::make([
@@ -130,7 +130,7 @@ class ArtikelDivisiResource extends Resource
                     ->relationship('divisi', 'nama_divisi') // relasi dan field label-nya
                     ->native(false)
             ])
-            ->paginated([3, 12, 24, 'all'])
+            ->paginated([6, 12, 24, 'all'])
             ->contentGrid([
                 'md' => 2,
                 'xl' => 3,

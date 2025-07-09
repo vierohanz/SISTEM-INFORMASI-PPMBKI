@@ -106,13 +106,13 @@ class EventDivisiResource extends Resource
             ->columns([
                 Stack::make([
                     // Gambar Utama
-                    ImageColumn::make('foto')
-                        ->label('')
-                        ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
-                        ->disk('public')
-                        ->height(180)
-                        ->width('100%')
-                        ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
+                    // ImageColumn::make('foto')
+                    //     ->label('')
+                    //     ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
+                    //     ->disk('public')
+                    //     ->height(180)
+                    //     ->width('100%')
+                    //     ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
 
                     // Konten Informasi
                     Stack::make([

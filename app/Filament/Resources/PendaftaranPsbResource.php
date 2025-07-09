@@ -346,7 +346,7 @@ class PendaftaranPsbResource extends Resource
                     ->relationship('psb', 'judul')
                     ->native(false)
             ])
-            ->paginated([3, 12, 24, 'all'])
+            ->paginated([6, 12, 24, 'all'])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

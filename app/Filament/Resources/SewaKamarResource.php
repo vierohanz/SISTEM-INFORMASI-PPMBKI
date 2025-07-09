@@ -258,7 +258,7 @@ class SewaKamarResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
-            ->paginated([3, 12, 24, 'all'])
+            ->paginated([6, 12, 24, 'all'])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
