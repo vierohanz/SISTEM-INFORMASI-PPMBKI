@@ -92,6 +92,7 @@ class ArtikelDivisiResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+
             ->columns([
                 Stack::make([
                     // Gambar thumbnail (hanya tampil jika ada)
@@ -129,7 +130,7 @@ class ArtikelDivisiResource extends Resource
                     ->relationship('divisi', 'nama_divisi') // relasi dan field label-nya
                     ->native(false)
             ])
-            ->paginated([6, 12, 24, 'all'])
+            ->paginated([3, 12, 24, 'all'])
             ->contentGrid([
                 'md' => 2,
                 'xl' => 3,

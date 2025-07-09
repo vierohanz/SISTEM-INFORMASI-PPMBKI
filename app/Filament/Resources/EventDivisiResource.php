@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventDivisiResource\Pages;
 use App\Filament\Resources\EventDivisiResource\RelationManagers;
+use App\Models\divisi;
 use App\Models\event;
 use App\Models\EventDivisi;
 use Filament\Forms;
@@ -52,7 +53,8 @@ class EventDivisiResource extends Resource
                                 titleAttribute: 'nama_divisi',
                             )
                             ->required()
-                            ->live(),
+                            ->searchable()
+                            ->preload()
                     ]),
                 Section::make('Informasi Umum')
                     ->schema([
@@ -62,6 +64,7 @@ class EventDivisiResource extends Resource
                         FileUpload::make('foto')
                             ->label('Foto')
                             ->maxSize(1000)
+                            ->maxFiles(3)
                             ->directory('uploads/foto')
                             ->image()
                             ->multiple()
@@ -152,7 +155,6 @@ class EventDivisiResource extends Resource
                                 'Tidak Aktif' => 'danger',
                                 default => 'gray',
                             }),
-
                     ])->space(1),
                 ])->space(3),
             ])
@@ -166,15 +168,18 @@ class EventDivisiResource extends Resource
                 SelectFilter::make('tahun')
                     ->label('Filter Tahun')
                     ->options(
-                        fn() => Event::select('tahun')
+                        fn() => event::select('tahun')
                             ->distinct()
                             ->orderByDesc('tahun')
+                            ->limit(10)
                             ->pluck('tahun', 'tahun')
                     )
                     ->native(false),
                 SelectFilter::make('divisi_id')
                     ->label('Filter Divisi')
-                    ->relationship('divisi', 'nama_divisi') // relasi dan field label-nya
+                    ->relationship('divisi', 'nama_divisi')
+                    ->searchable()
+                    ->preload(false) // biar gak langsung load semua
                     ->native(false)
             ])
             ->actions([
@@ -185,7 +190,6 @@ class EventDivisiResource extends Resource
                     ->url(fn($record) => '#'),
 
                 Tables\Actions\EditAction::make(),
-
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

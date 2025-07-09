@@ -7,7 +7,6 @@ use App\Http\Controllers\TamuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 //Article
 Route::get('/article', [ArtikelController::class, 'index'])->name('article.index');
 Route::get('/article/latest', [ArtikelController::class, 'latest'])->name('article.latest');
