@@ -39,18 +39,29 @@ class KomentarEventDivisiResource extends Resource
                                 titleAttribute: 'judul',
                             )
                             ->native(false)
-                            ->required(),
+                            ->required()
+                            ->reactive(), // Wajib agar bisa trigger perubahan
                     ]),
+
                 Section::make('Komentar')
                     ->schema([
                         Select::make('id_parent')
                             ->label('Balasan dari Komentar')
-                            ->relationship('parent', 'konten')
+                            ->options(function ($get) {
+                                $eventId = $get('id_event');
+                                if (!$eventId) return [];
+
+                                return komentar_event::where('id_event', $eventId)
+                                    ->whereNull('id_parent')
+                                    ->pluck('konten', 'id');
+                            })
                             ->native(false)
                             ->placeholder('Kosongkan jika ini komentar utama'),
+
                         TextInput::make('nama')
                             ->label('Nama')
                             ->required(),
+
                         Textarea::make('konten')
                             ->label('Isi Komentar')
                             ->rows(5)
