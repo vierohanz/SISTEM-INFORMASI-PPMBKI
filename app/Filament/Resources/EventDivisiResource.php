@@ -42,60 +42,60 @@ class EventDivisiResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+
             ->schema([
-                Section::make('Informasi Divisi')
-                    ->schema([
-                        Select::make('id_divisi')
-                            ->label('Divisi')
-                            ->native(false)
-                            ->relationship(
-                                name: 'divisi',
-                                titleAttribute: 'nama_divisi',
-                            )
-                            ->required()
-                            ->searchable()
-                            ->preload()
-                    ]),
-                Section::make('Informasi Umum')
-                    ->schema([
-                        TextInput::make('judul')
-                            ->label('Judul')
-                            ->required(),
-                        // FileUpload::make('foto')
-                        //     ->label('Foto')
-                        //     ->maxSize(1000)
-                        //     ->maxFiles(3)
-                        //     ->directory('uploads/foto')
-                        //     ->image()
-                        //     ->multiple()
-                        //     ->reorderable()
-                        //     ->required(),
-                        DatePicker::make('tanggal_upload')
-                            ->label('Tanggal Upload')
-                            ->required(),
-                        ToggleButtons::make('status')
-                            ->label('Status')
-                            ->inline()
-                            ->required()
-                            ->options([
-                                'Aktif' => 'Aktif',
-                                'Tidak Aktif' => 'Tidak Aktif',
-                            ])
-                            ->colors([
-                                'Aktif' => 'success',
-                                'Tidak Aktif' => 'danger',
-                            ]),
-                        Textarea::make('deskripsi')
-                            ->label('Deskripsi')
-                            ->rows(10)
-                            ->cols(20)
-                            ->required(),
-                        TextInput::make('tahun')
-                            ->label('Tahun')
-                            ->numeric()
-                            ->required(),
+                Select::make('id_divisi')
+                    ->label('Divisi')
+                    ->native(false)
+                    ->relationship(
+                        name: 'divisi',
+                        titleAttribute: 'nama_divisi',
+                    )
+                    ->required()
+                    ->searchable()
+                    ->preload(),
+
+                TextInput::make('judul')
+                    ->label('Judul')
+                    ->required(),
+
+                // FileUpload::make('foto')
+                //     ->label('Foto')
+                //     ->maxSize(1000)
+                //     ->maxFiles(3)
+                //     ->directory('uploads/foto')
+                //     ->image()
+                //     ->multiple()
+                //     ->reorderable()
+                //     ->required(),
+
+                DatePicker::make('tanggal_upload')
+                    ->label('Tanggal Upload')
+                    ->required(),
+
+                ToggleButtons::make('status')
+                    ->label('Status')
+                    ->inline()
+                    ->required()
+                    ->options([
+                        'Aktif' => 'Aktif',
+                        'Tidak Aktif' => 'Tidak Aktif',
+                    ])
+                    ->colors([
+                        'Aktif' => 'success',
+                        'Tidak Aktif' => 'danger',
                     ]),
 
+                Textarea::make('deskripsi')
+                    ->label('Deskripsi')
+                    ->rows(10)
+                    ->cols(20)
+                    ->required(),
+
+                TextInput::make('tahun')
+                    ->label('Tahun')
+                    ->numeric()
+                    ->required(),
             ]);
     }
 
