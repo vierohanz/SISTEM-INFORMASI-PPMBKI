@@ -185,12 +185,12 @@ class SewaKamarResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->headerActions([
-                ImportAction::make()
-                    ->importer(BookingImporter::class),
-                ExportAction::make()
-                    ->exporter(BookingExporter::class)
-            ])
+            // ->headerActions([
+            //     ImportAction::make()
+            //         ->importer(BookingImporter::class),
+            //     ExportAction::make()
+            //         ->exporter(BookingExporter::class)
+            // ])
             ->columns([
                 TextColumn::make('layanan_tamu.nama')
                     ->label('Nama Kamar')
@@ -258,6 +258,7 @@ class SewaKamarResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
+            ->paginated([6, 12, 24, 'all'])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

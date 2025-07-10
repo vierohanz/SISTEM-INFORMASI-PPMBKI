@@ -173,6 +173,7 @@ class PsbResource extends Resource
                     ->relationship('divisi', 'nama_divisi') // relasi dan field label-nya
                     ->native(false)
             ])
+            ->paginated([6, 12, 24, 'all'])
             ->actions([
                 Action::make('visit')
                     ->label('Visit')

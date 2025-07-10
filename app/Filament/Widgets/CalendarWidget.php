@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Booking;
+use App\Models\booking;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +15,7 @@ class CalendarWidget extends FullCalendarWidget
 
     public function fetchEvents(array $fetchInfo): array
     {
-        return Booking::with('layanan_tamu')
+        return booking::with('layanan_tamu')
             ->where(function ($query) use ($fetchInfo) {
                 $query->whereBetween('tanggal_datang', [$fetchInfo['start'], $fetchInfo['end']])
                     ->orWhereBetween('tanggal_keluar', [$fetchInfo['start'], $fetchInfo['end']])

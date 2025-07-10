@@ -13,6 +13,7 @@ Route::get('/{any}', function () {
     return Inertia::render('Index');
 })->where('any', '.*');
 
+
 // //Article
 // Route::get('/article', [ArtikelController::class, 'index'])->name('article.index');
 // Route::get('/article/latest', [ArtikelController::class, 'latest'])->name('article.latest');

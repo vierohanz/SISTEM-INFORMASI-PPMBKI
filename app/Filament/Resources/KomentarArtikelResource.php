@@ -40,17 +40,29 @@ class KomentarArtikelResource extends Resource
                                 titleAttribute: 'judul',
                             )
                             ->native(false)
-                            ->required(),
+                            ->required()
+                            ->reactive(), // <-- penting
                     ]),
 
                 Section::make('Komentar')
                     ->schema([
                         Select::make('id_parent')
                             ->label('Balasan dari Komentar')
-                            ->relationship('parent', 'konten')
-                            ->native(false)
-                            ->placeholder('Kosongkan jika ini komentar utama'),
+                            ->options(function (callable $get) {
+                                $artikelId = $get('id_artikel_divisi');
 
+                                if (!$artikelId) {
+                                    return [];
+                                }
+
+                                return komentar_artikel::where('id_artikel_divisi', $artikelId)
+                                    ->whereNull('id_parent')
+                                    ->pluck('konten', 'id');
+                            })
+                            ->native(false)
+                            ->placeholder('Kosongkan jika ini komentar utama')
+                            ->searchable()
+                            ->reactive(),
 
                         TextInput::make('nama')
                             ->label('Nama')
@@ -105,6 +117,7 @@ class KomentarArtikelResource extends Resource
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
+            ->paginated([6, 12, 24, 'all'])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

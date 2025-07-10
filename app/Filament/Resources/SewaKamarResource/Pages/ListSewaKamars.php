@@ -18,10 +18,10 @@ class ListSewaKamars extends ListRecords
         ];
     }
 
-    protected function getHeaderWidgets(): array
-    {
-        return [
-            CalendarWidget::class,
-        ];
-    }
+    // protected function getHeaderWidgets(): array
+    // {
+    //     return [
+    //         CalendarWidget::class,
+    //     ];
+    // }
 }
