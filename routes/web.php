@@ -14,7 +14,7 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 Route::get('/memory-limit', function () {
-    return '<h1>Memory Limit: ' . ini_get('memory_limit') . '</h1>';
+    echo "Memory Limit: " . ini_get('memory_limit');
 });
 // //Article
 // Route::get('/article', [ArtikelController::class, 'index'])->name('article.index');
