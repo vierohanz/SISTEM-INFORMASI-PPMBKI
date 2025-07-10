@@ -84,22 +84,22 @@ class KamarTamuResource extends Resource
                     ]),
 
 
-                Section::make('Foto Kamar')
-                    ->description('Unggah gambar kamar yang sesuai.')
-                    ->schema([
-                        FileUpload::make('foto')
-                            ->image()
-                            ->disk('public')
-                            ->maxSize(1000)
-                            ->visibility('public')
-                            ->reorderable()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ]),
-                    ]),
+                // Section::make('Foto Kamar')
+                //     ->description('Unggah gambar kamar yang sesuai.')
+                //     ->schema([
+                //         FileUpload::make('foto')
+                //             ->image()
+                //             ->disk('public')
+                //             ->maxSize(1000)
+                //             ->visibility('public')
+                //             ->reorderable()
+                //             ->imageEditor()
+                //             ->imageEditorAspectRatios([
+                //                 '16:9',
+                //                 '4:3',
+                //                 '1:1',
+                //             ]),
+                //     ]),
             ]);
     }
 

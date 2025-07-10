@@ -59,14 +59,14 @@ class ArtikelDivisiResource extends Resource
                         TextInput::make('judul')
                             ->label('Judul')
                             ->required(),
-                        FileUpload::make('foto')
-                            ->label('Foto')
-                            ->directory('uploads/foto')
-                            ->image()
-                            ->multiple()
-                            ->maxSize(1000)
-                            ->reorderable()
-                            ->required(),
+                        // FileUpload::make('foto')
+                        //     ->label('Foto')
+                        //     ->directory('uploads/foto')
+                        //     ->image()
+                        //     ->multiple()
+                        //     ->maxSize(1000)
+                        //     ->reorderable()
+                        //     ->required(),
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
