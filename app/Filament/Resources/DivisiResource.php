@@ -38,12 +38,12 @@ class DivisiResource extends Resource
         return $form
             ->schema([
                 Grid::make(1)->schema([
-                    FileUpload::make('foto')
-                        ->image()
-                        ->columnSpan(1)
-                        ->disk('public')
-                        ->maxSize(1000)
-                        ->imageEditor(),
+                    // FileUpload::make('foto')
+                    //     ->image()
+                    //     ->columnSpan(1)
+                    //     ->disk('public')
+                    //     ->maxSize(1000)
+                    //     ->imageEditor(),
                     TextInput::make('nama_divisi')
                         ->label('Divisi')
                         ->columnSpan(1)
@@ -71,20 +71,20 @@ class DivisiResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->headerActions([
-                ImportAction::make()
-                    ->importer(DivisiImporter::class),
-                ExportAction::make()
-                    ->exporter(DivisiExporter::class)
-            ])
+            // ->headerActions([
+            //     ImportAction::make()
+            //         ->importer(DivisiImporter::class),
+            //     ExportAction::make()
+            //         ->exporter(DivisiExporter::class)
+            // ])
             ->columns([
-                ImageColumn::make('foto')
-                    ->disk('public')
-                    ->size(120)
-                    ->square()
-                    ->defaultImageUrl(asset('images/default.png'))
-                    ->toggleable()
-                    ->extraImgAttributes(['style' => 'aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0']),
+                // ImageColumn::make('foto')
+                //     ->disk('public')
+                //     ->size(120)
+                //     ->square()
+                //     ->defaultImageUrl(asset('images/default.png'))
+                //     ->toggleable()
+                //     ->extraImgAttributes(['style' => 'aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0']),
                 TextColumn::make('nama_divisi')
                     ->label('Divisi')
                     ->searchable()
@@ -99,6 +99,7 @@ class DivisiResource extends Resource
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
+            ->paginated([6, 12, 24, 'all'])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
