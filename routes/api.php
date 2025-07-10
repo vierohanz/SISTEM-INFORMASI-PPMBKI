@@ -27,3 +27,6 @@ Route::post('/psb/{id}/pendaftaran', [PSBController::class, 'storePendaftaran'])
 Route::get('/tamu', [TamuController::class, 'index'])->name('tamu.index');
 Route::get('/tamu/{id}', [TamuController::class, 'show'])->name('tamu.show');
 Route::post('/tamu/{id}/booking', [TamuController::class, 'store'])->name('booking.store');
+Route::get('/memory-limit', function () {
+    return response('Memory Limit: ' . ini_get('memory_limit'));
+});
