@@ -106,12 +106,12 @@ class KamarTamuResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->headerActions([
-                ImportAction::make()
-                    ->importer(KamarTamuImporter::class),
-                ExportAction::make()
-                    ->exporter(KamarTamuExporter::class)
-            ])
+            // ->headerActions([
+            //     ImportAction::make()
+            //         ->importer(KamarTamuImporter::class),
+            //     ExportAction::make()
+            //         ->exporter(KamarTamuExporter::class)
+            // ])
             ->columns([
                 // ImageColumn::make('foto')
                 //     ->disk('public')
