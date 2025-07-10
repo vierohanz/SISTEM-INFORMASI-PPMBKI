@@ -3,6 +3,7 @@ import EventTerkini from "./EventTerkini";
 import EventBulan from "./EventTerkini";
 import KampusTerdekat from "./KampusTerdekat";
 import Statistik from "./Statistik";
+import { motion } from "framer-motion";
 
 export default function Home({ url }) {
     const kampusTerdekat = [
@@ -41,12 +42,14 @@ export default function Home({ url }) {
                         </p>
                     </div>
 
-                    <div className="flex w-1/2 h-150 m-2 justify-center items-center">
-                        <img
-                            src="/images/hero.png"
-                            alt="tampak depan ppm"
-                            className="w-150 h-auto"
-                        />
+                    <div className="flex w-1/2 h-150 m-2">
+                        <motion.div className="img">
+                            <img
+                                src="/images/mainhero.png"
+                                alt="tampak depan ppm"
+                                className="w-auto h-142 flex md:px-20"
+                            />
+                        </motion.div>
                     </div>
                 </div>
             </section>

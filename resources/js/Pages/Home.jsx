@@ -1,108 +1,37 @@
+import Navbar from "./Navbar";
+
 export default function Home({ url }) {
     return (
         <>
             <div>
+                <Navbar />
                 <div>
-                    <div className="my-3 px-14 flex items-center justify-between">
-                        <div className="flex items-center  mt-2">
-                            <a href="/">
-                                <img
-                                    src="/images/logoppmhome.png"
-                                    alt="logoppm"
-                                    className="w-78 h-auto"
-                                />
-                            </a>
-                        </div>
-                        <div className="flex gap-10">
-                            <ul className="flex gap-10">
-                                <li>
-                                    <a
-                                        href="/"
-                                        className={`text-base text-gray-900 ${
-                                            url === "/"
-                                                ? "text-black font-semibold"
-                                                : ""
-                                        }`}
-                                    >
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="/event"
-                                        className={`text-base text-gray-900 ${
-                                            url === "/santri"
-                                                ? "text-black font-semibold"
-                                                : ""
-                                        }`}
-                                    >
-                                        Event
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="/artikel"
-                                        className={`text-base text-gray-900 ${
-                                            url === "/artikel"
-                                                ? "text-black font-semibold"
-                                                : ""
-                                        }`}
-                                    >
-                                        Artikel
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="/layanan-tamu"
-                                        className={`text-base text-gray-900 ${
-                                            url === "/layanan-tamu"
-                                                ? "text-black font-semibold"
-                                                : ""
-                                        }`}
-                                    >
-                                        Layanan Tamu
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="/tentang-kami"
-                                        className={`text-base text-gray-900 ${
-                                            url === "/tentang-kami"
-                                                ? "text-black font-semibold"
-                                                : ""
-                                        }`}
-                                    >
-                                        Tentang Kami
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <div className=" p-4 m-4 rounded-lg">
                         <div className="flex justify-between items-center gap-2 px-10">
                             <div className="flex flex-col w-1/2 items-start justify-start">
-                                <h1 className="flex text-black text-6xl gap-2 font-bold">
+                                <h1 className="flex text-black text-6xl gap-2 font-bold font-sans">
                                     Selamat Datang{" "}
                                     {<h2 className="font-light">di</h2>}
                                 </h1>
-                                <h2 className="text-black font-light text-6xl">
+                                <h2 className="text-black font-light font-sans text-6xl">
                                     PPM BKI Semarang
                                 </h2>
                                 <div className="w-3/4 h-1 bg-green-500 rounded-full my-10" />
                                 <div className="flex md:mr-65">
-                                    <p className="text-black font-semibold text-lg">
+                                    <p className="text-black font-semibold text-lg font-sans">
                                         PPM BKI Semarang Berkomitmen Mencetak
                                         Generasi Unggul, Profesional Religius,
-                                        dan Berakhlakul Karimah
+                                        dan Berakhlakul Karimffahuhuy
                                     </p>
                                 </div>
                             </div>
                             <div className=" flex w-1/2 h-150 m-2 justify-center items-center">
                                 <img
-                                    src="/images/hero.png"
+                                    src="/images/mainhero.png"
                                     alt="tampak depan ppm"
                                     className="w-150 h-auto"
                                 />
+                                <img src="/images/particle1.png" alt="" />
                             </div>
                         </div>
                     </div>
