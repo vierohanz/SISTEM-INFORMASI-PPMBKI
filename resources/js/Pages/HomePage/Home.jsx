@@ -29,8 +29,7 @@ export default function Home({ url }) {
                     {/* Desktop Hero */}
                     <div className=" md:flex flex-col w-full md:w-1/2 items-start justify-start mb-6 md:mb-0">
                         <h1 className="flex text-black text-4xl md:text-6xl gap-2 font-bold">
-                            Selamat Datang{" "}
-                            <span className="font-light">di</span>
+                            Selamat Datang di
                         </h1>
                         <h2 className="text-black font-light text-4xl md:text-6xl">
                             PPM BKI Semarang
@@ -48,7 +47,7 @@ export default function Home({ url }) {
                         <img
                             src="/images/hero.png"
                             alt="Hero Mobile"
-                            className="w-full h-auto max-h-60 object-contain"
+                            className="w-full h-auto object-contain"
                         />
                     </div>
 
