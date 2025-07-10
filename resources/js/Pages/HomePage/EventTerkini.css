@@ -1,0 +1,70 @@
+/* File: EventTerkini.css (Styling untuk Efek Scaling) */
+
+/* Wrapper ini penting untuk clipping */
+.event-slider-wrapper {
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Container Swiper dibuat 'visible' agar slide yang besar tidak terpotong */
+.event-swiper {
+    overflow: visible !important;
+}
+
+/* Styling untuk SEMUA slide (kondisi default/mengecil) */
+.event-swiper .swiper-slide {
+    transform: scale(0.75); /* Ukuran default slide (lebih kecil) */
+    opacity: 0.8; /* Sedikit transparan saat tidak aktif */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform-origin: center bottom; /* Titik transformasi agar scale ke atas */
+}
+
+/* Styling HANYA untuk slide yang AKTIF (di tengah) */
+.event-swiper .swiper-slide-active {
+    transform: scale(
+        1
+    ); /* Kembali ke ukuran normal (atau bisa > 1 jika mau lebih besar) */
+    opacity: 1; /* Terlihat jelas */
+}
+
+/* Kustomisasi posisi dan tampilan pagination (titik-titik) */
+.event-swiper .swiper-pagination {
+    bottom: 0px !important;
+    position: absolute;
+}
+
+.event-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #d1d5db;
+    opacity: 1;
+}
+
+.event-swiper .swiper-pagination-bullet-active {
+    background-color: #54bd95;
+}
+
+/* Kustomisasi posisi dan tampilan navigation (panah) */
+.event-swiper .swiper-button-prev,
+.event-swiper .swiper-button-next {
+    color: #38a169; /* Warna hijau yang lebih tegas */
+    top: 50%;
+    transform: translateY(-70%); /* Sedikit ke atas agar tidak menabrak card */
+}
+
+.event-swiper .swiper-button-prev {
+    left: 40px;
+}
+
+.event-swiper .swiper-button-next {
+    right: 40px;
+}
+
+/* Sembunyikan panah di mobile */
+@media (max-width: 767px) {
+    .event-swiper .swiper-button-prev,
+    .event-swiper .swiper-button-next {
+        display: none;
+    }
+}
