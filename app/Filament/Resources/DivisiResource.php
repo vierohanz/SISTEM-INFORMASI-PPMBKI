@@ -71,12 +71,12 @@ class DivisiResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->headerActions([
-                ImportAction::make()
-                    ->importer(DivisiImporter::class),
-                ExportAction::make()
-                    ->exporter(DivisiExporter::class)
-            ])
+            // ->headerActions([
+            //     ImportAction::make()
+            //         ->importer(DivisiImporter::class),
+            //     ExportAction::make()
+            //         ->exporter(DivisiExporter::class)
+            // ])
             ->columns([
                 // ImageColumn::make('foto')
                 //     ->disk('public')
