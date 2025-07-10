@@ -20,13 +20,13 @@ class EditSewaKamar extends EditRecord
             Actions\RestoreAction::make(),
         ];
     }
-    protected function afterSave(): void
-    {
-        $recipient = Auth::user();
-        Notification::make()
-            ->title('Sewa kamar berhasil diubah.')
-            ->body('Data sewa kamar telah berhasil diubah ke dalam sistem.')
-            ->success()
-            ->sendToDatabase($recipient);
-    }
+    // protected function afterSave(): void
+    // {
+    //     $recipient = Auth::user();
+    //     Notification::make()
+    //         ->title('Sewa kamar berhasil diubah.')
+    //         ->body('Data sewa kamar telah berhasil diubah ke dalam sistem.')
+    //         ->success()
+    //         ->sendToDatabase($recipient);
+    // }
 }
