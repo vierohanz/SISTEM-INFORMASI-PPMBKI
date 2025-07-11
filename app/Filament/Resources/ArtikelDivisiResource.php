@@ -59,14 +59,14 @@ class ArtikelDivisiResource extends Resource
                         TextInput::make('judul')
                             ->label('Judul')
                             ->required(),
-                        // FileUpload::make('foto')
-                        //     ->label('Foto')
-                        //     ->directory('uploads/foto')
-                        //     ->image()
-                        //     ->multiple()
-                        //     ->maxSize(1000)
-                        //     ->reorderable()
-                        //     ->required(),
+                        FileUpload::make('foto')
+                            ->label('Foto')
+                            ->directory('uploads/foto')
+                            ->image()
+                            ->multiple()
+                            ->maxSize(1000)
+                            ->preserveFilenames()
+                            ->required(),
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
@@ -96,13 +96,11 @@ class ArtikelDivisiResource extends Resource
             ->columns([
                 Stack::make([
                     // Gambar thumbnail (hanya tampil jika ada)
-                    // ImageColumn::make('foto')
-                    //     ->label('')
-                    //     ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
-                    //     ->disk('public')
-                    //     ->height(180)
-                    //     ->width('100%')
-                    //     ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
+                    ImageColumn::make('foto')
+                        ->circular()
+                        ->stacked()
+                        ->limit(3)
+                        ->limitedRemainingText(size: 'lg'),
 
                     // Title dan URL
                     Stack::make([
