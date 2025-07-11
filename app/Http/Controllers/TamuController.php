@@ -45,6 +45,7 @@ class TamuController extends Controller
         ]);
     }
 
+
     public function store(Request $request, $id)
     {
         $layanan = DB::table('layanan_tamu')->where('id', $id)->first();
@@ -129,7 +130,7 @@ class TamuController extends Controller
     }
 
 
-    private function sendWhatsappNotification($to, $message)
+    public function sendWhatsappNotification($to, $message)
     {
         try {
             $client = new \GuzzleHttp\Client();
