@@ -78,13 +78,11 @@ class DivisiResource extends Resource
             //         ->exporter(DivisiExporter::class)
             // ])
             ->columns([
-                // ImageColumn::make('foto')
-                //     ->disk('public')
-                //     ->size(120)
-                //     ->square()
-                //     ->defaultImageUrl(asset('images/default.png'))
-                //     ->toggleable()
-                //     ->extraImgAttributes(['style' => 'aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0']),
+                ImageColumn::make('foto')
+                    ->circular()
+                    ->stacked()
+                    ->limit(3)
+                    ->limitedRemainingText(size: 'lg'),
                 TextColumn::make('nama_divisi')
                     ->label('Divisi')
                     ->searchable()
