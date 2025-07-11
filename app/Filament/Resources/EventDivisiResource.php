@@ -61,15 +61,15 @@ class EventDivisiResource extends Resource
                         TextInput::make('judul')
                             ->label('Judul')
                             ->required(),
-                        // FileUpload::make('foto')
-                        //     ->label('Foto')
-                        //     ->maxSize(1000)
-                        //     ->maxFiles(3)
-                        //     ->directory('uploads/foto')
-                        //     ->image()
-                        //     ->multiple()
-                        //     ->reorderable()
-                        //     ->required(),
+                        FileUpload::make('foto')
+                            ->label('Foto')
+                            ->maxSize(1000)
+                            ->maxFiles(3)
+                            ->directory('uploads/foto')
+                            ->image()
+                            ->multiple()
+                            ->preserveFilenames()
+                            ->required(),
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
@@ -106,13 +106,11 @@ class EventDivisiResource extends Resource
             ->columns([
                 Stack::make([
                     // Gambar Utama
-                    // ImageColumn::make('foto')
-                    //     ->label('')
-                    //     ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
-                    //     ->disk('public')
-                    //     ->height(180)
-                    //     ->width('100%')
-                    //     ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
+                    ImageColumn::make('foto')
+                        ->circular()
+                        ->stacked()
+                        ->limit(3)
+                        ->limitedRemainingText(size: 'lg'),
 
                     // Konten Informasi
                     Stack::make([
