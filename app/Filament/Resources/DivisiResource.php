@@ -79,7 +79,7 @@ class DivisiResource extends Resource
             // ])
             ->columns([
                 ImageColumn::make('foto')
-                    ->circular()
+
                     ->stacked()
                     ->limit(3)
                     ->limitedRemainingText(size: 'lg'),
