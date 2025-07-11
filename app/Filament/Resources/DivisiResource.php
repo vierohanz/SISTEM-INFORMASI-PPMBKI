@@ -38,12 +38,12 @@ class DivisiResource extends Resource
         return $form
             ->schema([
                 Grid::make(1)->schema([
-                    // FileUpload::make('foto')
-                    //     ->image()
-                    //     ->columnSpan(1)
-                    //     ->disk('public')
-                    //     ->maxSize(1000)
-                    //     ->imageEditor(),
+                    FileUpload::make('foto')
+                        ->image()
+                        ->columnSpan(1)
+                        ->disk('public')
+                        ->maxSize(1000)
+                        ->imageEditor(),
                     TextInput::make('nama_divisi')
                         ->label('Divisi')
                         ->columnSpan(1)
