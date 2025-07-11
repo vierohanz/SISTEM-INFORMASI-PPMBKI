@@ -79,9 +79,6 @@ class DivisiResource extends Resource
             // ])
             ->columns([
                 ImageColumn::make('foto')
-
-                    ->stacked()
-                    ->limit(3)
                     ->limitedRemainingText(size: 'lg'),
                 TextColumn::make('nama_divisi')
                     ->label('Divisi')
