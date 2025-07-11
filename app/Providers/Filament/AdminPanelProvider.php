@@ -34,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->passwordReset(RequestPasswordReset::class)
+            // ->passwordReset(RequestPasswordReset::class)
             ->profile()
             ->databaseNotifications()
             ->spa(true)
