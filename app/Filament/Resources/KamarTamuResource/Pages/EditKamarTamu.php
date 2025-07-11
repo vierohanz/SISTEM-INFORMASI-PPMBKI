@@ -19,13 +19,13 @@ class EditKamarTamu extends EditRecord
             Actions\RestoreAction::make(),
         ];
     }
-    // protected function afterSave(): void
-    // {
-    //     $recipient = Auth::user();
-    //     Notification::make()
-    //         ->title('Kamar Tamu berhasil diubah.')
-    //         ->body('Data Kamar Tamu telah berhasil diubah ke dalam sistem.')
-    //         ->success()
-    //         ->sendToDatabase($recipient);
-    // }
+    protected function afterSave(): void
+    {
+        $recipient = Auth::user();
+        Notification::make()
+            ->title('Kamar Tamu berhasil diubah.')
+            ->body('Data Kamar Tamu telah berhasil diubah ke dalam sistem.')
+            ->success()
+            ->sendToDatabase($recipient);
+    }
 }
