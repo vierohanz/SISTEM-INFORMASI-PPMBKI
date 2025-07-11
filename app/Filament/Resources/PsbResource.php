@@ -100,12 +100,10 @@ class PsbResource extends Resource
                 Stack::make([
                     // Gambar Utama
                     ImageColumn::make('foto')
-                        ->label('')
-                        ->getStateUsing(fn($record) => is_array($record->foto) ? $record->foto[0] : $record->foto)
-                        ->disk('public')
-                        ->height(180)
-                        ->width('100%')
-                        ->extraImgAttributes(['class' => 'rounded-t-xl object-cover w-full h-40']),
+                        ->circular()
+                        ->stacked()
+                        ->limit(3)
+                        ->limitedRemainingText(size: 'lg'),
 
                     // Konten Informasi
                     Stack::make([
