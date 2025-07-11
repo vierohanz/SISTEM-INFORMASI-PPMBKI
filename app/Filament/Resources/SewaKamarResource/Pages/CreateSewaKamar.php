@@ -35,11 +35,15 @@ class CreateSewaKamar extends CreateRecord
             ]);
         }
         $recipient = Auth::user();
-        Notification::make()
-            ->title('Sewa kamar berhasil dibuat.')
-            ->body("Sewa kamar oleh \"{$this->record->nama_tamu}\" telah berhasil disimpan ke dalam sistem. Silakan cek kembali jika diperlukan.")
-            ->success()
-            ->sendToDatabase($recipient);
+        if ($recipient) {
+            Notification::make()
+                ->title('Sewa kamar berhasil dibuat.')
+                ->body("Sewa kamar oleh \"{$this->record->nama_tamu}\" telah berhasil disimpan ke dalam sistem. Silakan cek kembali jika diperlukan.")
+                ->success()
+                ->sendToDatabase($recipient);
+        } else {
+            Log::warning('User tidak terautentikasi saat akan mengirim notifikasi database.');
+        }
     }
     // protected function afterCreate(): void
     // {
