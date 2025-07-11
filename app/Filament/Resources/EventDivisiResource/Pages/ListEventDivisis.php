@@ -17,11 +17,11 @@ class ListEventDivisis extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-    // protected function getHeaderWidgets(): array
-    // {
-    //     return [
-    //         EventStatusOverview::class,
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            EventStatusOverview::class,
 
-    //     ];
-    // }
+        ];
+    }
 }

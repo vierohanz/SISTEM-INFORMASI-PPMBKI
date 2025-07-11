@@ -18,10 +18,10 @@ class ListArtikelDivisis extends ListRecords
         ];
     }
 
-    // protected function getHeaderWidgets(): array
-    // {
-    //     return [
-    //         ArtikelStatusOverview::class,
-    //     ];
-    // }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            ArtikelStatusOverview::class,
+        ];
+    }
 }
