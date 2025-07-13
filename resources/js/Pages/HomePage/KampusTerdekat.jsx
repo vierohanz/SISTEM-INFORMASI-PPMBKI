@@ -1,3 +1,6 @@
+import FadeContent from "../../Components/FadeContent";
+import RunningLogos from "../../Components/RunningLogos";
+
 const kampusTerdekat = [
     { src: "/images/LogoUdinus.png", name: "UDINUS", jarak: "±9 Km" },
     { src: "/images/logoUnnes.png", name: "UNNES", jarak: "±12 Km" },
@@ -9,29 +12,23 @@ const kampusTerdekat = [
 
 export default function KampusTerdekat() {
     return (
-        <section className="flex flex-col justify-center items-center mt-20">
-            <h1 className="text-black font-bold text-4xl">
-                Kampus Terdekat Area PPM BKI Semarang
-            </h1>
+        <section className="flex flex-col justify-center items-center mt-45 lg:mt-0">
+            <div className="w-full flex flex-col items-center text-center mb-8 px-4 sm:px-6 md:px-0">
+                <FadeContent blur={true}>
+                    <h1 className="text-black font-bold font-Inter text-2xl sm:text-3xl md:text-4xl mb-2">
+                        Kampus Terdekat
+                    </h1>
+                </FadeContent>
+                <FadeContent blur={true}>
+                    <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
+                        Berikut adalah kampus-kampus terdekat yang dapat menjadi
+                        pengembangan diri bagi santri PPM BKI Semarang.
+                    </p>
+                </FadeContent>
+            </div>
+
             <div className="flex w-full bg-green-200 justify-center items-center gap-3 mt-4 flex-wrap">
-                {kampusTerdekat.map((kampus, index) => (
-                    <div
-                        key={index}
-                        className="flex gap-3 w-1/7 min-w-[140px] items-center justify-center"
-                    >
-                        <img
-                            src={kampus.src}
-                            alt={`logo ${kampus.name.toLowerCase()}`}
-                            className="w-auto h-15"
-                        />
-                        <div className="flex flex-col h-24 my-2 justify-center items-start">
-                            <h2 className="text-gray-500 font-bold">
-                                {kampus.name}
-                            </h2>
-                            <h2 className="text-gray-500">{kampus.jarak}</h2>
-                        </div>
-                    </div>
-                ))}
+                <RunningLogos data={kampusTerdekat} />
             </div>
         </section>
     );

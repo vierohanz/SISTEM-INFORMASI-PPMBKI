@@ -1,15 +1,15 @@
 export default function Footer() {
     return (
-        <footer className="bg-green-700 text-white ">
-            <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Logo dan Deskripsi */}
+        <footer className="bg-gradient-to-r from-emerald-500 to-teal-700 text-white">
+            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+                {/* Logo & Deskripsi */}
                 <div>
                     <img
-                        src="/images/logoppmhome.png"
+                        src="/images/logoppm_dark.png"
                         alt="Logo PPMBKI"
-                        className="h-12 mb-4"
+                        className="h-14 mb-4"
                     />
-                    <p className="text-sm">
+                    <p className="text-sm leading-relaxed font-Inter text-white/90">
                         PPM BKI Semarang adalah pondok pesantren mahasiswa yang
                         berkomitmen mencetak generasi unggul, profesional,
                         religius, dan berakhlakul karimah.
@@ -18,47 +18,48 @@ export default function Footer() {
 
                 {/* Navigasi Cepat */}
                 <div>
-                    <h3 className="font-semibold text-lg mb-4">Navigasi</h3>
-                    <ul className="space-y-2 text-sm">
-                        <li>
-                            <a href="/" className="hover:underline">
-                                Beranda
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/event" className="hover:underline">
-                                Event
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/artikel" className="hover:underline">
-                                Artikel
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/layanan-tamu" className="hover:underline">
-                                Layanan Tamu
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/tentang-kami" className="hover:underline">
-                                Tentang Kami
-                            </a>
-                        </li>
+                    <h3 className="font-semibold text-lg font-Inter mb-4">
+                        Navigasi
+                    </h3>
+                    <ul className="space-y-2 font-Inter text-sm">
+                        {[
+                            { label: "Beranda", href: "/" },
+                            { label: "Event", href: "/event" },
+                            { label: "Artikel", href: "/artikel" },
+                            { label: "Layanan Tamu", href: "/layanan-tamu" },
+                            { label: "Tentang Kami", href: "/tentang-kami" },
+                        ].map((nav, idx) => (
+                            <li key={idx}>
+                                <a
+                                    href={nav.href}
+                                    className="hover:text-emerald-300 transition-colors"
+                                >
+                                    {nav.label}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
-                {/* Kontak atau Sosial Media */}
+                {/* Kontak */}
                 <div>
-                    <h3 className="font-semibold text-lg mb-4">Kontak</h3>
-                    <p className="text-sm">Jl. Contoh No. 123, Semarang</p>
-                    <p className="text-sm">Email: info@ppmbki.ponpes.id</p>
-                    <p className="text-sm">Telp: 0812-3456-7890</p>
+                    <h3 className="font-semibold text-lg font-Inter mb-4">
+                        Kontak
+                    </h3>
+                    <ul className="font-Inter space-y-2 text-sm text-white/90">
+                        <li>
+                            PPM Bina Khoirul Insan, Jl. Ngesrep Tim. V No.8,
+                            Sumurboto, Kec. Banyumanik, Kota Semarang, Jawa
+                            Tengah 50269
+                        </li>
+                        <li>Email: ppmbki.smg@gmail.com</li>
+                        <li>Telp: 0895-0446-9254</li>
+                    </ul>
                 </div>
             </div>
 
-            {/* Footer Bawah */}
-            <div className="bg-green-800 text-center py-4 text-sm">
+            {/* Copyright */}
+            <div className="bg-emerald-700 text-center font-Inter py-4  text-sm text-white/80">
                 &copy; {new Date().getFullYear()} PPM BKI Semarang. All rights
                 reserved.
             </div>

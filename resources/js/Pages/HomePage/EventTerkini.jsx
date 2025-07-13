@@ -1,122 +1,185 @@
-// File: EventTerkini.js (Versi Final Sesuai Desain)
-
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules"; // Hapus EffectCoverflow
-
-// Import CSS Swiper
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// Import CSS kustom kita
-import "./EventTerkini.css";
-
+import FadeContent from "../../Components/FadeContent";
+import AnimatedContent from "../../Components/AnimatedContent";
 import EventCard from "../../Components/CardEvent";
-
+import { useNavigate } from "react-router-dom";
 export default function EventTerkini() {
-    const events = [
-        // Isi dengan data event Anda, pastikan ada gambar yang sesuai
-        {
-            image: "/images/default.png", // Ganti dengan path gambar Anda
-            title: "PSB - 2025",
-            description:
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        },
-        {
-            image: "/images/default.png", // Ganti dengan path gambar Anda
-            title: "OSAKA - 2024",
-            description:
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        },
-        {
-            image: "/images/default.png", // Ganti dengan path gambar Anda
-            title: "CAI - 2025",
-            description:
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        },
-        {
-            image: "/images/default.png", // Ganti dengan path gambar Anda
-            title: "NEXT - 2024",
-            description:
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        },
-        {
-            image: "/images/default.png", // Ganti dengan path gambar Anda
-            title: "EVENT - 2025",
-            description:
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        },
-    ];
+    const [events, setEvents] = useState([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/event/latest")
+            .then((res) => res.json())
+            .then((data) => {
+                const cleaned = data.data.map((item) => {
+                    let image = "";
+
+                    try {
+                        const parsedFoto = JSON.parse(item.foto);
+                        image = Array.isArray(parsedFoto)
+                            ? `http://127.0.0.1:8000/storage/${parsedFoto[0]}`
+                            : "";
+                    } catch (error) {
+                        console.warn("Gagal parse foto:", item.foto, error);
+                    }
+
+                    return {
+                        title: item.judul,
+                        year: item.tahun,
+                        status: item.status,
+                        divisi: item.nama_divisi,
+                        description: item.deskripsi,
+                        image: image,
+                    };
+                });
+
+                setEvents(cleaned);
+            })
+            .catch((err) => console.error("Error fetching data:", err));
+    }, []);
 
     return (
-        <section className="max-w-7xl mx-auto px-4 py-8 sm:py-16">
-            {/* Bagian Header (tidak berubah) */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-12">
-                <div className="flex-1">
-                    <h2 className="text-3xl font-bold">Event Bulan Ini!</h2>
-                    <p className="text-gray-600 max-w-lg mt-2">
-                        Lorem Ipsum has been the industry's standard dummy text
-                        ever since the 1500s.
-                    </p>
+        <section className="">
+            <div className="max-w-7xl -mb-9 mx-auto  px-4 mt-10 sm:py-16">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-5 lg:mb-12">
+                    <div className="flex-1 flex gap-3 items-center z-30">
+                        <AnimatedContent
+                            direction="horizontal"
+                            ease="power3.out"
+                            duration={1.5}
+                            blur={true}
+                            reverse="true"
+                            className="space-y-3 md:space-y-6 w-full md:w-1/2 z-10 text-center md:text-left  md:ml-10"
+                        >
+                            <div className="h-25 w-3 bg-gradient-to-br from-emerald-500 to-teal-400"></div>
+                        </AnimatedContent>
+                        <div className="z-30">
+                            <FadeContent blur={true}>
+                                <h1 className="text-black font-bold font-Inter text-2xl sm:text-3xl md:text-4xl mb-2">
+                                    Event Bulan Ini!
+                                </h1>
+                            </FadeContent>
+                            <FadeContent blur={true}>
+                                <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
+                                    Berbagai event inspiratif bulan ini yang
+                                    dirancang untuk meningkatkan semangat
+                                    belajar para santri.
+                                </p>
+                            </FadeContent>
+                        </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                        <AnimatedContent
+                            direction="horizontal"
+                            ease="power3.out"
+                            reverse={false}
+                            duration={1.5}
+                            className=""
+                        >
+                            <button
+                                onClick={() => navigate("/event")}
+                                className="relative shadow-xl cursor-pointer text-sm sm:text-base md:text-lg
+               px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3
+               rounded-full bg-gradient-to-br from-emerald-500 to-teal-400
+               transition-all duration-300 overflow-hidden hover:scale-105"
+                            >
+                                <span className="relative z-10 text-sm font-medium font-Inter text-white">
+                                    Kunjungi Lebih Lanjut
+                                </span>
+                                <span
+                                    className="absolute inset-0 bg-[rgba(255,215,0,0.6)]
+                    opacity-0 hover:opacity-30 transition-opacity
+                    duration-300 rounded-full"
+                                ></span>
+                            </button>
+                        </AnimatedContent>
+                    </div>
                 </div>
-                <div className="flex-shrink-0">
-                    <button className="text-white px-5 py-2.5 rounded-full bg-[#54BD95] hover:bg-[#4AAE88] transition-colors">
-                        Kunjungi Lebih Lanjut
-                    </button>
-                </div>
-            </div>
 
-            {/* PENTING: Wrapper untuk mengontrol 'overflow' */}
-            <div className="event-slider-wrapper">
-                <Swiper
-                    observer={true}
-                    observeParents={true}
-                    // Hapus 'EffectCoverflow' dari modules
-                    modules={[Pagination, Navigation]}
-                    // Konfigurasi utama untuk efek scaling
-                    loop={true}
-                    centeredSlides={true}
-                    grabCursor={true}
-                    // Atur jumlah slide yang terlihat dan jaraknya
-                    slidesPerView={3}
-                    loopedSlides={5}
-                    spaceBetween={0} // Jarak antar slide (bisa disesuaikan)
-                    // Navigasi & Pagination
-                    navigation={true}
-                    pagination={{ clickable: true }}
-                    // Konfigurasi responsif
-                    breakpoints={{
-                        0: {
-                            slidesPerView: 1.2, // Atau nilai lain yang sesuai untuk layar sangat kecil
-                            spaceBetween: 10,
-                        },
-                        640: {
-                            slidesPerView: 2.2, // Atau nilai lain untuk tablet kecil
-                            spaceBetween: 20,
-                        },
-                        1024: {
-                            slidesPerView: 3, // Untuk desktop dan laptop
-                            spaceBetween: 0,
-                        },
-                        1280: {
-                            slidesPerView: 3, // Atau mungkin lebih besar jika ruang memungkinkan
-                            spaceBetween: 0,
-                        },
-                    }}
-                    className="event-swiper"
-                >
-                    {events.map((event, index) => (
-                        <SwiperSlide key={index}>
-                            {({ isActive }) => (
-                                <EventCard
-                                    image={event.image}
-                                    title={event.title}
-                                    description={event.description}
-                                />
-                            )}
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <div className="w-full px-4 sm:px-6 md:px-8 py-12">
+                    <div className="max-w-screen-xl mx-auto  relative">
+                        <div className="pointer-events-none absolute top-0 left-0 w-5 h-full z-10 bg-gradient-to-r from-white to-transparent" />
+                        <div className="pointer-events-none absolute top-0 right-0 w-5 h-full z-10 bg-gradient-to-l from-white to-transparent" />
+
+                        {events.length > 0 && (
+                            <Swiper
+                                modules={[Navigation, Pagination]}
+                                loop={true}
+                                centeredSlides={true}
+                                grabCursor={true}
+                                initialSlide={Math.floor(events.length / 2)}
+                                slidesPerView={3}
+                                spaceBetween={40}
+                                pagination={{ clickable: true }}
+                                navigation={{
+                                    nextEl: ".swiper-button-next",
+                                    prevEl: ".swiper-button-prev",
+                                }}
+                                breakpoints={{
+                                    0: {
+                                        slidesPerView: 1.1,
+                                        spaceBetween: 12,
+                                    },
+                                    640: {
+                                        slidesPerView: 1.5,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 28,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 40,
+                                    },
+                                }}
+                            >
+                                {events.map((event, index) => (
+                                    <SwiperSlide key={index}>
+                                        {({ isActive, isPrev, isNext }) => (
+                                            <div
+                                                className={`transition-all mt-5 duration-500 ease-in-out transform relative ${
+                                                    isActive
+                                                        ? "scale-y-100 scale-x-95 opacity-100 z-20"
+                                                        : "scale-x-75 scale-y-85 opacity-70 z-10"
+                                                }`}
+                                            >
+                                                {!isActive && (
+                                                    <div
+                                                        className={`absolute top-0 bottom-0 w-12 sm:w-16 z-30 pointer-events-none ${
+                                                            isPrev
+                                                                ? "left-[-16px] bg-gradient-to-r to-transparent rounded-l-xl"
+                                                                : isNext
+                                                                ? "right-[-16px] bg-gradient-to-l to-transparent rounded-r-xl"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <div className="w-full h-full blur-md" />
+                                                    </div>
+                                                )}
+
+                                                <div className="relative z-20">
+                                                    <EventCard
+                                                        description={
+                                                            event.description
+                                                        }
+                                                        image={event.image}
+                                                        title={event.title}
+                                                        year={event.year}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )}
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );

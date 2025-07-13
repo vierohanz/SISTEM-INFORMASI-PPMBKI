@@ -30,10 +30,10 @@
     <meta name="twitter:image" content="https://ppmbki.ponpes.id/og-image.png" />
 
     <!-- Icons -->
-    <link rel="icon" type="image/png" href="/logo_icon.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/logo_icon.png" />
-    <link rel="shortcut icon" href="/logo_icon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo_icon.png" />
+    <link rel="icon" type="image/png" href="/logoppm.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/logoppm.png" />
+    <link rel="shortcut icon" href="/logoppm.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logoppm.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Laravel / Inertia / Vite -->
