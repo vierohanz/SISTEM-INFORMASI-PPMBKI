@@ -39,7 +39,7 @@ export default function GaleriKegiatan() {
                                 isActive: false,
                             },
                             {
-                                title: "BERBAGI TAKJIL",
+                                title: "TAKJIL",
                                 image: "/images/Takjil_2024.jpg",
                                 isActive: false,
                             },
@@ -49,7 +49,7 @@ export default function GaleriKegiatan() {
                                 isActive: false,
                             },
                             {
-                                title: "BUKA BERSAMA",
+                                title: "BUKBER",
                                 image: "/images/Bukber_2024.jpg",
                                 isActive: false,
                             },
