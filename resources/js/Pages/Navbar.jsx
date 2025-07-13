@@ -31,11 +31,14 @@ export default function Navbar() {
 
     return (
         <div
-            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-50 ${
-                menuOpen
-                    ? "transition-none bg-transparent"
-                    : "transition-all duration-300 bg-white"
-            } ${scrolled && !menuOpen ? "shadow-md backdrop-blur-sm" : ""}`}
+            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-50 
+        ${
+            menuOpen
+                ? "bg-transparent"
+                : scrolled
+                ? "bg-white shadow-md backdrop-blur-sm transition-all duration-300"
+                : "bg-transparent transition-all duration-300"
+        }`}
         >
             {/* Logo */}
             <Link to="/">

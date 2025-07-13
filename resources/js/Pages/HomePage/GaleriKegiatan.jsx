@@ -40,7 +40,7 @@ export default function GaleriKegiatan() {
                             },
                             {
                                 title: "BERBAGI TAKJIL",
-                                image: "/images/takjil_2024.jpg",
+                                image: "/images/Takjil_2024.jpg",
                                 isActive: false,
                             },
                             {
