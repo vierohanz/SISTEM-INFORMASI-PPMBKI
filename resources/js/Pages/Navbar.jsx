@@ -144,7 +144,7 @@ export default function Navbar() {
             )}
 
             <div
-                className={`fixed top-0 left-0 w-[300px] h-screen bg-white -z-50 transition-transform duration-500 ease-in-out md:hidden ${
+                className={`fixed top-0 left-0 w-[270px] h-screen bg-white -z-50 transition-transform duration-500 ease-in-out md:hidden ${
                     menuOpen ? "translate-x-0" : "-translate-x-full"
                 }`}
             >
@@ -160,7 +160,7 @@ export default function Navbar() {
                                                     (prev) => !prev
                                                 )
                                             }
-                                            className="w-full text-black text-xl font-semibold tracking-wide flex justify-between items-center"
+                                            className="w-full text-black text-lg font-semibold tracking-wide flex justify-between items-center"
                                         >
                                             Event
                                             <ChevronRight
@@ -206,7 +206,7 @@ export default function Navbar() {
                                                             );
                                                             navigate("/event");
                                                         }}
-                                                        className="relative text-lg text-gray-800 hover:text-emerald-600 transition-colors  before:absolute  before:bg-emerald-500"
+                                                        className="relative text-md text-gray-800 hover:text-emerald-600 transition-colors  before:absolute  before:bg-emerald-500"
                                                     >
                                                         Event Divisi
                                                     </button>
@@ -219,7 +219,7 @@ export default function Navbar() {
                                                             );
                                                             navigate("/psb");
                                                         }}
-                                                        className="relative text-lg text-gray-800 hover:text-emerald-600 transition-colors before:content-[''] before:absolute before:-left-4 before:bg-emerald-500 "
+                                                        className="relative text-md text-gray-800 hover:text-emerald-600 transition-colors before:content-[''] before:absolute before:-left-4 before:bg-emerald-500 "
                                                     >
                                                         PSB
                                                     </button>
@@ -233,7 +233,7 @@ export default function Navbar() {
                                             setMenuOpen(false);
                                             navigate(item.path);
                                         }}
-                                        className="text-black text-xl font-semibold tracking-wide w-full text-left hover:text-emerald-600 transition-all"
+                                        className="text-black text-lg font-semibold tracking-wide w-full text-left hover:text-emerald-600 transition-all"
                                     >
                                         {item.name}
                                     </button>
