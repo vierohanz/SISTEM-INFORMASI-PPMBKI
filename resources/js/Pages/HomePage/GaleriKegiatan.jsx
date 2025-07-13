@@ -20,7 +20,7 @@ export default function GaleriKegiatan() {
                         </p>
                     </FadeContent>
                 </div>
-                <div className="mt-2 lg:mt-10 px-5 lg:px-50 ">
+                <div className="mt-2 lg:mt-10 px-5 md:px-30 ">
                     <HoverEffect
                         items={[
                             {

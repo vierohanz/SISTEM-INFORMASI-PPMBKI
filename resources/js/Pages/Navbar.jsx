@@ -50,7 +50,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="hidden md:flex gap-9 font-Inter text-sm font-semibold tracking-widest">
+            <ul className="hidden md:flex gap-9 text-gray-400 font-Inter text-[12px] font-semibold tracking-widest">
                 {navItems.map((item) =>
                     item.name === "Event" ? (
                         <li
@@ -59,7 +59,7 @@ export default function Navbar() {
                             onMouseEnter={() => setEventDropdownOpen(true)}
                             onMouseLeave={() => setEventDropdownOpen(false)}
                         >
-                            <span className="text-black cursor-pointer hover:font-bold transition group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-400 group-hover:scale-105">
+                            <span className="text-gray-500 cursor-pointer hover:font-bold transition group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-400 group-hover:scale-105">
                                 {item.name}
                             </span>
                             {/* Dropdown */}
@@ -75,7 +75,7 @@ export default function Navbar() {
                                         <li>
                                             <Link
                                                 to="/event"
-                                                className="block px-4 py-2 hover:bg-emerald-100 text-sm text-black"
+                                                className="block px-4 py-2 hover:bg-emerald-100 text-[11px] text-gray-500"
                                             >
                                                 Event Divisi
                                             </Link>
@@ -83,7 +83,7 @@ export default function Navbar() {
                                         <li>
                                             <Link
                                                 to="/psb"
-                                                className="block px-4 py-2 hover:bg-emerald-100 text-sm text-black"
+                                                className="block px-4 py-2 hover:bg-emerald-100 text-[11px] text-gray-500"
                                             >
                                                 PSB
                                             </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
                         <li key={item.name} className="group relative">
                             <Link
                                 to={item.path}
-                                className="text-black hover:font-bold transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-400 transform group-hover:scale-105"
+                                className="text-gray-500 hover:font-bold transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-400 transform group-hover:scale-105"
                             >
                                 {item.name}
                             </Link>
@@ -131,8 +131,6 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu - Half Screen, Slide from Left */}
-            {/* Overlay - tampak saat menu aktif */}
-            {/* Overlay Background */}
             {menuOpen && (
                 <div
                     className="fixed inset-0 bg-black/40 -z-70 transition-opacity duration-300"
