@@ -188,7 +188,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute animate-bounce rounded-lg w-auto h-8 md:h-20 top-8 md:top-[5rem] right-10 md:right-[24rem] "
+                            className="absolute animate-bounce rounded-lg w-auto h-8 md:h-20 top-8 md:top-[5rem] right-10 md:right-[25rem] "
                         />
 
                         <motion.img
@@ -201,7 +201,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-6 md:h-14 top-8 md:top-[10rem] right-10 md:right-[23rem]"
+                            className="absolute rounded-lg w-auto h-6 md:h-14 top-8 md:top-[10rem] right-10 md:right-[26rem]"
                         />
                         <motion.img
                             src="/images/particle3.png"
@@ -213,7 +213,7 @@ export default function Home({ url }) {
                             whileHover={{ scale: 1.2, rotate: -15 }}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="absolute rounded-lg w-auto h-8 md:h-18 top-28 md:top-[7rem] right-12 md:right-[2rem]"
+                            className="absolute rounded-lg w-auto h-8 md:h-18 top-28 md:top-[7rem] right-12 md:right-[3.6rem]"
                         />
                         <motion.img
                             src="/images/particle4.png"
@@ -225,7 +225,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-12 md:h-24 top-28 md:top-[18rem] right-12 md:right-[1rem]"
+                            className="absolute rounded-lg w-auto h-12 md:h-24 top-28 md:top-[18rem] right-12 md:right-[3.3rem]"
                         />
                         <motion.img
                             src="/images/particle5.png"
@@ -237,7 +237,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-10 md:h-27 top-44 md:top-[27rem] right-10 md:right-[25rem]"
+                            className="absolute rounded-lg w-auto h-10 md:h-27 top-44 md:top-[27rem] right-10 md:right-[27rem]"
                         />
                         <motion.img
                             src="/images/particle6.png"
@@ -249,7 +249,7 @@ export default function Home({ url }) {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             whileHover={{ scale: 1.3, x: -10 }}
-                            className="absolute rounded-lg w-auto h-10 md:h-18 top-28 md:top-[32rem] right-12 md:right-[1rem]"
+                            className="absolute rounded-lg w-auto h-10 md:h-18 top-28 md:top-[32rem] right-12 md:right-[2rem]"
                         />
                     </div>
                 </div>
