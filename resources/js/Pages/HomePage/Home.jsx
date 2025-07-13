@@ -28,10 +28,10 @@ export default function Home({ url }) {
                         className="space-y-3 md:space-y-6 w-full md:w-1/2 z-10 text-center md:text-left  md:ml-10"
                     >
                         <div className="text-center md:text-left">
-                            <h1 className="text-4xl md:text-7xl font-Inter font-bold text-gray-900 ">
+                            <h1 className="text-4xl md:text-6xl font-Inter font-bold text-gray-900 ">
                                 Selamat Datang di
                             </h1>
-                            <h2 className="text-4xl md:text-6xl font-Inter  font-light text-gray-900">
+                            <h2 className="text-4xl md:text-5xl font-Inter  font-light text-gray-900">
                                 PPM BKI Semarang
                             </h2>
 
@@ -72,7 +72,7 @@ export default function Home({ url }) {
                                 </svg>
                             </div>
 
-                            <p className="text-gray-800 font-Inter text-base md:text-lg font-medium leading-relaxed tracking-wide max-w-2xl mx-auto md:mx-0">
+                            <p className="text-gray-800 font-Inter text-base md:text-base font-medium leading-relaxed tracking-wide max-w-2xl mx-auto md:mx-0">
                                 <span className="font-semibold font-Inter text-teal-600">
                                     PPM BKI Semarang
                                 </span>{" "}
@@ -188,7 +188,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute animate-bounce rounded-lg w-auto h-8 md:h-20 top-8 md:top-10 right-10 md:right-130"
+                            className="absolute animate-bounce rounded-lg w-auto h-8 md:h-20 top-8 md:top-[5rem] right-10 md:right-[24rem] "
                         />
 
                         <motion.img
@@ -201,7 +201,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-6 md:h-14 top-8 md:top-30 right-10 md:right-116"
+                            className="absolute rounded-lg w-auto h-6 md:h-14 top-8 md:top-[10rem] right-10 md:right-[23rem]"
                         />
                         <motion.img
                             src="/images/particle3.png"
@@ -213,7 +213,7 @@ export default function Home({ url }) {
                             whileHover={{ scale: 1.2, rotate: -15 }}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="absolute rounded-lg w-auto h-8 md:h-18 top-28 md:top-27 right-12 md:right-35"
+                            className="absolute rounded-lg w-auto h-8 md:h-18 top-28 md:top-[7rem] right-12 md:right-[2rem]"
                         />
                         <motion.img
                             src="/images/particle4.png"
@@ -225,7 +225,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-12 md:h-24 top-28 md:top-62 right-12 md:right-30"
+                            className="absolute rounded-lg w-auto h-12 md:h-24 top-28 md:top-[18rem] right-12 md:right-[1rem]"
                         />
                         <motion.img
                             src="/images/particle5.png"
@@ -237,7 +237,7 @@ export default function Home({ url }) {
                                 duration: 0.5,
                                 ease: [0.68, -0.55, 0.265, 1.55],
                             }}
-                            className="absolute rounded-lg w-auto h-10 md:h-27 top-44 md:top-110 right-10 md:right-129"
+                            className="absolute rounded-lg w-auto h-10 md:h-27 top-44 md:top-[27rem] right-10 md:right-[25rem]"
                         />
                         <motion.img
                             src="/images/particle6.png"
@@ -249,7 +249,7 @@ export default function Home({ url }) {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             whileHover={{ scale: 1.3, x: -10 }}
-                            className="absolute rounded-lg w-auto h-10 md:h-18 top-28 md:top-130 right-12 md:right-30"
+                            className="absolute rounded-lg w-auto h-10 md:h-18 top-28 md:top-[32rem] right-12 md:right-[1rem]"
                         />
                     </div>
                 </div>

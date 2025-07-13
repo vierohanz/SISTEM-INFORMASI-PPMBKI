@@ -2,10 +2,9 @@ export default function Footer() {
     return (
         <footer className="bg-gradient-to-r from-emerald-500 to-teal-700 text-white">
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
-                {/* Logo & Deskripsi */}
                 <div>
                     <img
-                        src="/images/logoppm_dark.png"
+                        src="/images/logo ppm_full putih.png"
                         alt="Logo PPMBKI"
                         className="h-14 mb-4"
                     />
@@ -16,7 +15,6 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* Navigasi Cepat */}
                 <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Navigasi
@@ -41,7 +39,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* Kontak */}
                 <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Kontak
