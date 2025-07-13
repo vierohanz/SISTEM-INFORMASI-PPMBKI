@@ -30,7 +30,7 @@ export default function ArticleCard({
                 <h3 className="text-xl font-bold font-Inter text-gray-800">
                     {title}
                 </h3>
-                <p className="text-md font-Inter text-gray-600 mt-2 line-clamp-3">
+                <p className="text-md font-Inter text-gray-600 mt-2 line-clamp-3 lg:line-clamp-4">
                     {description}
                 </p>
 
