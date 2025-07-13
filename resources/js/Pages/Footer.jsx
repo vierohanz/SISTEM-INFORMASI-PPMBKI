@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="bg-emerald-700 text-center font-Inter py-4  text-sm text-white/80">
+            <div className="bg-emerald-700 text-center font-Inter py-4  text-sm text-white">
                 &copy; {new Date().getFullYear()} PPM BKI Semarang. All rights
                 reserved.
             </div>
