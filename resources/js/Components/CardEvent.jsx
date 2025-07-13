@@ -20,7 +20,7 @@ export default function EventCard({
                 <h3 className="text-base sm:text-lg font-bold font-Inter  text-gray-800 mb-2">
                     {title} <span> - {year}</span>
                 </h3>
-                <p className="text-gray-500 text-start font-Inter  text-sm sm:text-xs md:text-base leading-relaxed line-clamp-3 lg:line-clamp-4">
+                <p className="text-gray-500 text-start font-Inter  text-sm sm:text-xs md:text-base leading-relaxed line-clamp-4 lg:line-clamp-5">
                     {description}
                 </p>
             </div>
