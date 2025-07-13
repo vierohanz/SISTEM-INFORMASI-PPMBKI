@@ -18,13 +18,18 @@
     "dependencies": {
         "@fontsource/inter": "^5.2.6",
         "@inertiajs/react": "^2.0.14",
+        "@tabler/icons-react": "^3.34.0",
+        "clsx": "^2.1.1",
         "framer-motion": "^12.23.0",
+        "gsap": "^3.13.0",
         "lucide-react": "^0.525.0",
         "motion": "^12.23.3",
+        "ogl": "^1.0.11",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-icons": "^5.5.0",
         "react-router-dom": "^7.6.3",
-        "swiper": "^11.2.10"
+        "swiper": "^11.2.10",
+        "tailwind-merge": "^3.3.1"
     }
 }

@@ -1,7 +1,5 @@
-/* File: EventTerkini.css (Styling untuk Efek Scaling) */
-
-/* Wrapper ini penting untuk clipping */
-.event-slider-wrapper {
+file: EventTerkini.css (Styling untuk Efek Scaling)
+    /* Wrapper ini penting untuk clipping */ .event-slider-wrapper {
     overflow: hidden;
     padding: 20px 0;
     position: relative;
@@ -48,7 +46,7 @@
 /* Kustomisasi posisi dan tampilan navigation (panah) */
 .event-swiper .swiper-button-prev,
 .event-swiper .swiper-button-next {
-    color: #38a169; /* Warna hijau yang lebih tegas */
+    color: #38a169;
     top: 50%;
     transform: translateY(-70%); /* Sedikit ke atas agar tidak menabrak card */
 }
@@ -61,7 +59,6 @@
     right: 40px;
 }
 
-/* Sembunyikan panah di mobile */
 @media (max-width: 767px) {
     .event-swiper .swiper-button-prev,
     .event-swiper .swiper-button-next {

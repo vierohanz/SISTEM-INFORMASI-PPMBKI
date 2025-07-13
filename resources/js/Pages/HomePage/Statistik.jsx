@@ -1,25 +1,52 @@
+import AnimatedContent from "../../Components/AnimatedContent";
+import CountUp from "../../Components/CountUp";
+import FadeContent from "../../Components/FadeContent";
+import SpotlightCard from "../../Components/SpotlightCard";
+
 const statistik = [
-    { label: "JUMLAH SANTRI", value: 354 },
-    { label: "JUMLAH GURU", value: 9 },
-    { label: "LULUSAN MUBALIGH", value: 192 },
-    { label: "SANTRI BERPRESTASI", value: 123 },
+    { label: "Jumlah Santri", value: "354" },
+    { label: "Jumlah Guru", value: "9" },
+    { label: "Lulusan Mubaligh", value: "192" },
+    { label: "Santri Berprestasi", value: "123" },
 ];
 
 export default function Statistik() {
     return (
-        <section className="flex justify-center items-center bg-teal-200 gap-7 flex-wrap">
-            {statistik.map((item, index) => (
-                <div
-                    key={index}
-                    className="flex flex-col w-1/5 min-w-[220px] h-72 relative my-8 p-4 bg-green-400 rounded-2xl shadow-sm text-white overflow-hidden"
-                >
-                    <div className="absolute -bottom-16 -right-16 size-90 bg-green-500 rounded-full opacity-75 translate-x-1/4 translate-y-1/4" />
-                    <div className="flex flex-col relative z-10 text-center items-center justify-center p-4">
-                        <p className="text-2xl font-light">{item.label}</p>
-                        <p className="text-7xl font-bold">{item.value}</p>
-                    </div>
-                </div>
-            ))}
+        <section className="py-12 mt-10 px-8 md:px-4 bg-[#F9F8FE]">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                {statistik.map((item, index) => (
+                    <AnimatedContent
+                        direction="up"
+                        duration={1.5}
+                        ease="power3.out"
+                    >
+                        <SpotlightCard
+                            key={index}
+                            className="relative bg-gradient-to-br from-emerald-500 to-teal-400 hover:brightness-110 hover:scale-105 duration-300 transition-all text-white rounded-2xl h-60 md:h-86 w-full flex flex-col items-center justify-start overflow-hidden shadow-xl"
+                            spotlightColor="rgba(255, 215, 0, 0.6)"
+                        >
+                            <div className=" md:pt-1 text-center z-10">
+                                <p className="text-lg md:text-[20px] font-semibold font-Inter tracking-wide">
+                                    {item.label}
+                                </p>
+                            </div>
+
+                            <div className="absolute bottom-0 w-full h-[60%] bg-white/20 backdrop-blur-md rounded-t-full z-0 shadow-inner" />
+
+                            <div className="mt-auto mb-6 z-10 text-4xl md:text-6xl font-extrabold drop-shadow-md">
+                                <CountUp
+                                    from={0}
+                                    to={Number(item.value)}
+                                    separator=","
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                            </div>
+                        </SpotlightCard>
+                    </AnimatedContent>
+                ))}
+            </div>
         </section>
     );
 }

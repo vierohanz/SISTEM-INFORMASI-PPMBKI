@@ -1,34 +1,26 @@
-export default function EventCard({ image, title, description }) {
+export default function EventCard({
+    image,
+    title,
+    description,
+    status,
+    divisi,
+    year,
+}) {
     return (
-        <div className="w-[280px] min-h-[360px] rounded-[26px] overflow-hidden bg-white shadow-md transition-all duration-300 ease-in-out overflow-hidden">
-            {/* Bagian hijau atas */}
-            <div className="relative bg-[#8AD0B5] h-[180px] flex items-center justify-center px-3 pt-4 pb-8">
+        <div className="h-[380px] lg:h-[455px]  rounded-3xl shadow-lg mb-12">
+            <div className="relative bg-gradient-to-br from-emerald-500 to-teal-400 rounded-t-3xl rounded-b-3xl shadow-2xl h-[200px] sm:h-[180px] md:h-[240px] overflow-hidden flex items-center justify-center">
                 <img
                     src={image}
                     alt={title}
-                    className="h-[110px] object-contain rounded-lg"
+                    className="lg:mb-1 shadow-xl p-1 bg-white h-[137px] w-[250px]  sm:w-[110px] sm:h-[110px] md:w-[290px] md:h-[170px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
                 />
-
-                {/* SVG lengkungan bawah */}
-                <svg
-                    className="absolute bottom-0 left-0 w-full"
-                    viewBox="0 0 400 40"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M0,0 C150,40 250,40 400,0 L400,40 L0,40 Z"
-                        fill="white"
-                    />
-                </svg>
             </div>
 
-            {/* Konten bawah */}
-            <div className="pt-6 pb-8 px-4 text-center">
-                <h3 className="text-base font-bold text-gray-800 mb-2">
-                    {title}
+            <div className="pt-7 pb-6 px-4  text-justify">
+                <h3 className="text-base sm:text-lg font-bold font-Inter  text-gray-800 mb-2">
+                    {title} <span> - {year}</span>
                 </h3>
-                <p className="text-gray-400 text-xs leading-relaxed">
+                <p className="text-gray-500 text-justify font-Inter  text-sm sm:text-xs md:text-base leading-relaxed line-clamp-3">
                     {description}
                 </p>
             </div>
