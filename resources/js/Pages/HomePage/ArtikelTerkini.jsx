@@ -10,9 +10,10 @@ import ArticleCard from "../../Components/CardArticle";
 import { useNavigate } from "react-router-dom";
 export default function ArtikelTerkini() {
     const [events, setEvents] = useState([]);
+    const API_URL = import.meta.env.APP_URL;
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/article/latest")
+        fetch(`https://ppmbki.ponpes.id/api/article/latest`)
             .then((res) => res.json())
             .then((data) => {
                 const cleaned = data.data.map((item) => {
@@ -22,9 +23,9 @@ export default function ArtikelTerkini() {
                     try {
                         const parsedFoto = JSON.parse(item.foto);
                         if (Array.isArray(parsedFoto)) {
-                            imageLeft = `http://127.0.0.1:8000/storage/${parsedFoto[0]}`;
+                            imageLeft = `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`;
                             imageRight = parsedFoto[1]
-                                ? `http://127.0.0.1:8000/storage/${parsedFoto[1]}`
+                                ? `https://ppmbki.ponpes.id/storage/${parsedFoto[1]}`
                                 : imageLeft; // fallback jika hanya 1 foto
                         }
                     } catch (error) {

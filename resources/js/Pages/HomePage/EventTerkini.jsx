@@ -11,8 +11,9 @@ import { useNavigate } from "react-router-dom";
 export default function EventTerkini() {
     const [events, setEvents] = useState([]);
     const navigate = useNavigate();
+    const API_URL = import.meta.env.APP_URL;
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/event/latest")
+        fetch(`https://ppmbki.ponpes.id/api/event/latest`)
             .then((res) => res.json())
             .then((data) => {
                 const cleaned = data.data.map((item) => {
@@ -21,7 +22,7 @@ export default function EventTerkini() {
                     try {
                         const parsedFoto = JSON.parse(item.foto);
                         image = Array.isArray(parsedFoto)
-                            ? `http://127.0.0.1:8000/storage/${parsedFoto[0]}`
+                            ? `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`
                             : "";
                     } catch (error) {
                         console.warn("Gagal parse foto:", item.foto, error);
