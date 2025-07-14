@@ -64,12 +64,12 @@ export default function ArtikelTerkini() {
                                 <div className="h-25 w-3 bg-gradient-to-br from-emerald-500 to-teal-400"></div>
                             </AnimatedContent>
                             <div className="z-20">
-                                <FadeContent blur={true}>
+                                <FadeContent>
                                     <h1 className="text-black  font-bold font-Inter text-2xl sm:text-3xl md:text-4xl mb-2">
                                         Artikel Berita!
                                     </h1>
                                 </FadeContent>
-                                <FadeContent blur={true}>
+                                <FadeContent>
                                     <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
                                         Temukan berita dan cerita terkini
                                         seputar kegiatan santri serta momen

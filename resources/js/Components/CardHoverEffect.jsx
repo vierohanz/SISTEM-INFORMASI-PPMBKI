@@ -59,7 +59,7 @@ export const HoverEffect = ({ items, className }) => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-32 sm:h-70 object-cover rounded-xl"
+                                    className="w-full h-32 sm:h-60 object-cover rounded-xl"
                                 />
                             </div>
                         </div>
