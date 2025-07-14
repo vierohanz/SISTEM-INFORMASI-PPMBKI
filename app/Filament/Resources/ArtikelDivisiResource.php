@@ -9,6 +9,7 @@ use App\Models\ArtikelDivisi;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -70,11 +71,10 @@ class ArtikelDivisiResource extends Resource
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
-                        Textarea::make('deskripsi')
+                        RichEditor::make('deskripsi')
                             ->label('Deskripsi')
-                            ->rows(10)
-                            ->cols(20)
-                            ->required(),
+                            ->required()
+
                     ]),
 
                 // Section::make('Detail Tambahan')
