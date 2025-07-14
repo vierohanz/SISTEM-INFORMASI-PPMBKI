@@ -73,7 +73,7 @@ export default function CommentsSection({ eventId }) {
                 />
                 <div className="bg-gray-50 p-2 rounded-xl w-full shadow-sm">
                     <p className="text-sm font-medium text-gray-800 mb-1">
-                        @{reply.nama}
+                        {reply.nama}
                     </p>
                     <p className="text-sm text-gray-700">{reply.konten}</p>
                     <button
@@ -144,7 +144,7 @@ export default function CommentsSection({ eventId }) {
                         <div className="w-full">
                             <div className="bg-gray-100 p-3 rounded-xl">
                                 <p className="text-sm font-medium text-gray-800 mb-1">
-                                    @{comment.nama}
+                                    {comment.nama}
                                 </p>
                                 <p className="text-sm text-gray-700">
                                     {comment.konten}
