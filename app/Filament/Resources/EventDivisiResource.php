@@ -10,6 +10,7 @@ use App\Models\EventDivisi;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -85,10 +86,8 @@ class EventDivisiResource extends Resource
                                 'Aktif' => 'success',
                                 'Tidak Aktif' => 'danger',
                             ]),
-                        Textarea::make('deskripsi')
+                        RichEditor::make('deskripsi')
                             ->label('Deskripsi')
-                            ->rows(10)
-                            ->cols(20)
                             ->required(),
                         TextInput::make('tahun')
                             ->label('Tahun')
