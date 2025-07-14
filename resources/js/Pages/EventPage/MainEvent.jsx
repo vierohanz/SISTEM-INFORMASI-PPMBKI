@@ -171,7 +171,7 @@ export default function MainEvent() {
                             {gallery.map((img, idx) => (
                                 <img
                                     key={idx}
-                                    src={`https://127.0.0.1:8000/storage/${img}`}
+                                    src={`https://ppmbki.ponpes.id/storage/${img}`}
                                     alt={`Galeri ${idx + 1}`}
                                     className="w-full hover:scale-105 duration-300 transition-all cursor-pointer h-60 object-cover rounded-lg shadow-md"
                                 />
@@ -184,7 +184,7 @@ export default function MainEvent() {
                     );
                 })()}
             </div>
-            ;{/* Komentar */}
+            {/* Komentar */}
             <CommentsSection eventId={id} />
             <ToastContainer position="top-right" autoClose={3000} />
         </div>
