@@ -16,13 +16,6 @@ export default function ArticleCard({
                         className="object-cover w-full h-48 md:h-52 rounded-xl"
                     />
                 </div>
-                {/* <div className="rounded-xl cols-1 overflow-hidden">
-                    <img
-                        src={imageRight}
-                        alt="Flyer"
-                        className="object-cover w-full h-40 sm:h-48 md:h-52 rounded-xl"
-                    />
-                </div> */}
             </div>
 
             {/* Konten */}

@@ -26,7 +26,7 @@ export default function ArtikelTerkini() {
                             imageLeft = `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`;
                             imageRight = parsedFoto[1]
                                 ? `https://ppmbki.ponpes.id/storage/${parsedFoto[1]}`
-                                : imageLeft; // fallback jika hanya 1 foto
+                                : imageLeft;
                         }
                     } catch (error) {
                         console.warn("Gagal parse foto:", item.foto, error);

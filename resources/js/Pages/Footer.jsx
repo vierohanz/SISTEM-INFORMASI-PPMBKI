@@ -1,7 +1,8 @@
 export default function Footer() {
     return (
         <footer className="bg-gradient-to-r from-emerald-500 to-teal-700 text-white">
-            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-12">
+                {/* Logo dan Deskripsi */}
                 <div>
                     <img
                         src="/images/logo ppm_full putih.png"
@@ -15,6 +16,7 @@ export default function Footer() {
                     </p>
                 </div>
 
+                {/* Navigasi */}
                 <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Navigasi
@@ -39,6 +41,7 @@ export default function Footer() {
                     </ul>
                 </div>
 
+                {/* Kontak */}
                 <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Kontak
@@ -53,10 +56,29 @@ export default function Footer() {
                         <li>Telp: 0895-0446-9254</li>
                     </ul>
                 </div>
+
+                {/* Google Maps */}
+                <div>
+                    <h3 className="font-semibold text-lg font-Inter mb-4">
+                        Lokasi
+                    </h3>
+                    <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d494.4311964809135!2d110.42008108758706!3d-7.04932303126834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDInNTYuOSJTIDExMMKwMjUnMTMuNSJF!5e0!3m2!1sid!2sid!4v1752468251142!5m2!1sid!2sid"
+                            width="100%"
+                            height="250"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Lokasi PPM BKI Semarang"
+                        ></iframe>
+                    </div>
+                </div>
             </div>
 
             {/* Copyright */}
-            <div className="bg-emerald-700 text-center font-Inter py-4  text-sm text-white">
+            <div className="bg-emerald-700 text-center font-Inter py-4 text-sm text-white">
                 &copy; {new Date().getFullYear()} PPM BKI Semarang. All rights
                 reserved.
             </div>
