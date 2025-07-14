@@ -8,7 +8,7 @@
     background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* penting agar bisa animasi teks */
+    -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
     display: inline-block;
     animation: shine 5s linear infinite;

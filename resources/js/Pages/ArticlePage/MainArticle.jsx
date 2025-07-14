@@ -53,7 +53,7 @@ export default function MainArticle() {
                 />
                 <div className="bg-gray-50 p-3 rounded-xl w-full shadow-sm">
                     <p className="text-sm font-medium text-gray-800 mb-1">
-                        @{reply.nama}
+                        {reply.nama}
                     </p>
                     <p className="text-sm text-gray-700">{reply.konten}</p>
                     <button
@@ -75,7 +75,7 @@ export default function MainArticle() {
             <div className="flex flex-col items-center justify-center py-16">
                 <FaSpinner className="animate-spin text-emerald-500 text-4xl mb-4" />
                 <p className="text-gray-600 font-Inter text-sm">
-                    Memuat data event...
+                    Memuat data article...
                 </p>
             </div>
         );
@@ -92,60 +92,68 @@ export default function MainArticle() {
     }
 
     return (
-        <div className="w-full font-Inter overflow-x-hidden">
+        <div className="w-full font-Inter overflow-x-hidden bg-white">
             {/* Hero Section */}
-            <div className="w-full h-[250px] md:h-[500px] flex flex-col justify-center items-center text-center bg-[url('/images/MainEvent.png')] bg-no-repeat bg-cover bg-center">
+            <div className="w-full py-12 pt-25 px-6 md:px-20 text-center bg-gradient-to-br from-emerald-50 to-white">
                 <AnimatedContent>
-                    <h1 className="text-4xl font-Inter md:text-6xl font-bold text-white drop-shadow-md">
-                        <ShinyText
-                            text={article.judul}
-                            disabled={false}
-                            speed={3}
-                        />
+                    <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+                        <span
+                            className="bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500
+             bg-[length:200%_100%] bg-clip-text text-transparent
+             animate-[shine_4s_linear_infinite]"
+                        >
+                            {article.judul}
+                        </span>
                     </h1>
                 </AnimatedContent>
                 <FadeContent blur={true}>
-                    <p className="text-white font-Inter text-lg md:text-2xl mt-2">
-                        {article.tahun || "Event Terbaru"}
-                    </p>
-                </FadeContent>
-            </div>
-            {/* Deskripsi dan Tilted Image */}
-            <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <AnimatedContent direction="horizontal" reverse={true}>
-                    <div>
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent mb-4">
-                            {article.judul}
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line text-sm md:text-base">
-                            {article.deskripsi}
+                    <div className="flex items-center justify-center gap-3">
+                        <p className="text-gray-500 text-sm italic">
+                            {article.tanggal_upload || "Tanggal tidak tersedia"}
+                        </p>
+                        <p className="text-gray-500 text-sm italic"> | </p>
+                        <p className="text-gray-500 text-sm italic">
+                            {article.nama_divisi || "divisi tersedia"}
                         </p>
                     </div>
-                </AnimatedContent>
-                <AnimatedContent direction="horizontal">
-                    {imageUrl && (
-                        <div className="flex justify-center">
-                            <TiltedCard
-                                imageSrc={imageUrl}
-                                rotateAmplitude={12}
-                                scaleOnHover={1}
-                                containerHeight="280px"
-                                containerWidth="400px"
-                                imageHeight="250px"
-                                imageWidth="400px"
-                                showMobileWarning={false}
-                                showTooltip={true}
-                                displayOverlayContent={true}
-                            />
-                        </div>
-                    )}
-                </AnimatedContent>
+                </FadeContent>
             </div>
+
+            {/* Gambar utama */}
+            {imageUrl && (
+                <div className="w-full max-w-5xl mx-auto mt-8 mb-12 px-4">
+                    <div className="flex justify-center">
+                        <TiltedCard
+                            imageSrc={imageUrl}
+                            rotateAmplitude={12}
+                            scaleOnHover={1}
+                            containerHeight="500px"
+                            containerWidth="800px"
+                            imageHeight="400px"
+                            imageWidth="800px"
+                            showMobileWarning={false}
+                            showTooltip={true}
+                            displayOverlayContent={true}
+                        />
+                    </div>
+                </div>
+            )}
+
+            {/* Konten Deskripsi */}
+            <div className="max-w-3xl mx-auto px-4 md:px-6 mb-16">
+                <h2 className="text-xl md:text-2xl font-semibold text-emerald-700 mb-4">
+                    Deskripsi
+                </h2>
+                <p className="text-gray-800 leading-relaxed text-justify whitespace-pre-line text-sm md:text-base">
+                    {article.deskripsi}
+                </p>
+            </div>
+
             {/* Galeri */}
             <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
                 <FadeContent>
                     <h3 className="text-xl font-bold text-center mb-4 text-emerald-700">
-                        Galeri Event
+                        Galeri Artikel
                     </h3>
                     <p className="text-center text-gray-500 max-w-2xl mx-auto text-sm md:text-base mb-8">
                         Dokumentasi kegiatan event ini yang memperlihatkan

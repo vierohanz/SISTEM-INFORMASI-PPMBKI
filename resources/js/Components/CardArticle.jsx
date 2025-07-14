@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ArticleCard({
     id,
-    imageLeft,
-    imageRight,
+    image,
     title,
     description,
     divisi,
@@ -14,7 +13,7 @@ export default function ArticleCard({
             <div className="grid grid-cols-3 gap-4 mb-9">
                 <div className="rounded-xl col-span-3 overflow-hidden">
                     <img
-                        src={imageLeft}
+                        src={image}
                         alt="Gambar utama"
                         className="object-cover w-full h-48 md:h-52 rounded-xl"
                     />
