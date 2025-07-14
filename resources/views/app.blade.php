@@ -13,6 +13,7 @@
         content="PPMBKI, PPM BKI, Pondok Pesantren Mahasiswa, Ponpes Semarang, Mahasiswa Semarang, Pendidikan Islam, Asrama Mahasiswa" />
     <meta name="author" content="PPMBKI Semarang" />
     <link rel="canonical" href="https://ppmbki.ponpes.id/" />
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
