@@ -7,7 +7,7 @@ import TiltedCard from "../../Components/TiltedCard";
 import AnimatedContent from "../../Components/AnimatedContent";
 import FadeContent from "../../Components/FadeContent";
 import { FaSpinner } from "react-icons/fa";
-import CommentsSection from "../../Components/CommentEvent";
+import CommentsEvent from "../../Components/CommentEvent";
 export default function MainEvent() {
     const { id } = useParams();
     const [event, setEvent] = useState(null);
@@ -185,7 +185,7 @@ export default function MainEvent() {
                 })()}
             </div>
             {/* Komentar */}
-            <CommentsSection eventId={id} />
+            <CommentsEvent eventId={id} />
             <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );

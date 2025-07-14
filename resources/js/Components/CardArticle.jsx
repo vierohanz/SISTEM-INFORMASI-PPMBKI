@@ -36,7 +36,7 @@ export default function ArticleCard({
                     </p>
                     <Link
                         to={`/article/${id}`}
-                        className="bg-gradient-to-br from-emerald-400 to-teal-400 font-medium font-Inter hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded-lg text-sm"
+                        className="bg-gradient-to-br cursor-pointer from-emerald-400 to-teal-400 font-medium font-Inter hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded-lg text-sm"
                     >
                         Lihat
                     </Link>
