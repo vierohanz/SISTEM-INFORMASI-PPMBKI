@@ -10,7 +10,7 @@ export default function CommentsSection({ eventId }) {
     const [nama, setNama] = useState("");
 
     const fetchComments = () => {
-        fetch(`http://127.0.0.1:8000/api/event/${eventId}/comments`)
+        fetch(`https://ppmbki.ponpes.id/api/event/${eventId}/comments`)
             .then((res) => res.json())
             .then((data) => setComments(data.data || []))
             .catch((err) => console.error("Gagal ambil komentar:", err));
@@ -35,7 +35,7 @@ export default function CommentsSection({ eventId }) {
 
         try {
             const res = await fetch(
-                `http://127.0.0.1:8000/api/event/${eventId}/comments`,
+                `https://ppmbki.ponpes.id/api/event/${eventId}/comments`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

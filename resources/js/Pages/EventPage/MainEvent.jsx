@@ -18,7 +18,7 @@ export default function MainEvent() {
     const [nama, setNama] = useState("");
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/event/${id}`)
+        fetch(`https://ppmbki.ponpes.id/api/event/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setEvent(data.data);
@@ -31,7 +31,7 @@ export default function MainEvent() {
     }, [id]);
 
     const fetchComments = () => {
-        fetch(`http://127.0.0.1:8000/api/event/${id}/comments`)
+        fetch(`https://ppmbki.ponpes.id/api/event/${id}/comments`)
             .then((res) => res.json())
             .then((data) => setComments(data.data || []))
             .catch((err) => console.error("Gagal ambil komentar:", err));
@@ -85,7 +85,7 @@ export default function MainEvent() {
     try {
         const parsedFoto = JSON.parse(event.foto);
         if (Array.isArray(parsedFoto) && parsedFoto.length > 0) {
-            imageUrl = `http://127.0.0.1:8000/storage/${parsedFoto[0]}`;
+            imageUrl = `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`;
         }
     } catch (error) {
         console.warn("Gagal parse foto:", event.foto, error);
