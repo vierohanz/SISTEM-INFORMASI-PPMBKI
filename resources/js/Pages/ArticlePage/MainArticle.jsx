@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShinyText from "../../Components/ShinyText";
 import TiltedCard from "../../Components/TiltedCard";
@@ -8,14 +8,12 @@ import AnimatedContent from "../../Components/AnimatedContent";
 import FadeContent from "../../Components/FadeContent";
 import { FaSpinner } from "react-icons/fa";
 import CommentArticle from "../../Components/CommentArticle";
+
 export default function MainArticle() {
     const { id } = useParams();
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState("");
-    const [replyTo, setReplyTo] = useState(null);
-    const [nama, setNama] = useState("");
 
     useEffect(() => {
         fetch(`https://ppmbki.ponpes.id/api/article/${id}`)
@@ -30,52 +28,21 @@ export default function MainArticle() {
             });
     }, [id]);
 
-    const fetchComments = () => {
-        fetch(`https://ppmbki.ponpes.id/api/article/${id}/comments`)
-            .then((res) => res.json())
-            .then((data) => setComments(data.data || []))
-            .catch((err) => console.error("Gagal ambil komentar:", err));
-    };
-
     useEffect(() => {
         if (id) {
-            fetchComments();
+            fetch(`https://ppmbki.ponpes.id/api/article/${id}/comments`)
+                .then((res) => res.json())
+                .then((data) => setComments(data.data || []))
+                .catch((err) => console.error("Gagal ambil komentar:", err));
         }
     }, [id]);
 
-    const renderReplies = (replies = []) =>
-        replies.map((reply) => (
-            <div key={reply.id} className="ml-12 mt-4 flex gap-3 items-start">
-                <img
-                    src="/images/default.png"
-                    className="w-7 h-7 rounded-full object-cover"
-                    alt="Avatar"
-                />
-                <div className="bg-gray-50 p-3 rounded-xl w-full shadow-sm">
-                    <p className="text-sm font-medium text-gray-800 mb-1">
-                        {reply.nama}
-                    </p>
-                    <p className="text-sm text-gray-700">{reply.konten}</p>
-                    <button
-                        onClick={() => setReplyTo(reply.id)}
-                        className="text-xs mt-2 text-emerald-600 hover:underline"
-                    >
-                        Balas
-                    </button>
-                    {reply.replies && reply.replies.length > 0 && (
-                        <div className="mt-2">
-                            {renderReplies(reply.replies)}
-                        </div>
-                    )}
-                </div>
-            </div>
-        ));
     if (loading || !article) {
         return (
             <div className="flex flex-col items-center justify-center py-16">
                 <FaSpinner className="animate-spin text-emerald-500 text-4xl mb-4" />
                 <p className="text-gray-600 font-Inter text-sm">
-                    Memuat data article...
+                    Memuat data artikel...
                 </p>
             </div>
         );
@@ -94,43 +61,37 @@ export default function MainArticle() {
     return (
         <div className="w-full font-Inter overflow-x-hidden bg-white">
             {/* Hero Section */}
-            <div className="w-full py-12 pt-25 px-6 md:px-20 text-center bg-gradient-to-br from-emerald-50 to-white">
+            <div className="w-full pt-30 py-16 px-6 md:px-20 text-center bg-gradient-to-br from-emerald-50 to-white">
                 <AnimatedContent>
                     <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                        <span
-                            className="bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500
-             bg-[length:200%_100%] bg-clip-text text-transparent
-             animate-[shine_4s_linear_infinite]"
-                        >
+                        <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500 bg-[length:200%_100%] bg-clip-text text-transparent animate-[shine_4s_linear_infinite]">
                             {article.judul}
                         </span>
                     </h1>
                 </AnimatedContent>
                 <FadeContent blur={true}>
-                    <div className="flex items-center justify-center gap-3">
-                        <p className="text-gray-500 text-sm italic">
+                    <div className="flex flex-wrap justify-center gap-3 text-sm text-gray-500 italic">
+                        <p>
                             {article.tanggal_upload || "Tanggal tidak tersedia"}
                         </p>
-                        <p className="text-gray-500 text-sm italic"> | </p>
-                        <p className="text-gray-500 text-sm italic">
-                            {article.nama_divisi || "divisi tersedia"}
-                        </p>
+                        <p>|</p>
+                        <p>{article.nama_divisi || "Divisi tidak tersedia"}</p>
                     </div>
                 </FadeContent>
             </div>
 
-            {/* Gambar utama */}
+            {/* Gambar Utama */}
             {imageUrl && (
-                <div className="w-full max-w-5xl mx-auto mt-8 mb-12 px-4">
+                <div className="w-full max-w-6xl mx-auto mt-10 mb-16 px-4 md:px-8">
                     <div className="flex justify-center">
                         <TiltedCard
                             imageSrc={imageUrl}
-                            rotateAmplitude={12}
+                            rotateAmplitude={10}
                             scaleOnHover={1}
-                            containerHeight="500px"
-                            containerWidth="800px"
-                            imageHeight="400px"
-                            imageWidth="800px"
+                            containerHeight="400px"
+                            containerWidth="100%"
+                            imageHeight="100%"
+                            imageWidth="100%"
                             showMobileWarning={false}
                             showTooltip={true}
                             displayOverlayContent={true}
@@ -139,8 +100,8 @@ export default function MainArticle() {
                 </div>
             )}
 
-            {/* Konten Deskripsi */}
-            <div className="max-w-3xl mx-auto px-4 md:px-6 mb-16">
+            {/* Deskripsi */}
+            <div className="max-w-4xl mx-auto px-4 md:px-8 mb-20">
                 <h2 className="text-xl md:text-2xl font-semibold text-emerald-700 mb-4">
                     Deskripsi
                 </h2>
@@ -150,7 +111,7 @@ export default function MainArticle() {
             </div>
 
             {/* Galeri */}
-            <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
+            <div className="max-w-6xl mx-auto px-4 md:px-8 py-10">
                 <FadeContent>
                     <h3 className="text-xl font-bold text-center mb-4 text-emerald-700">
                         Galeri Artikel
@@ -160,6 +121,7 @@ export default function MainArticle() {
                         semangat dan kebersamaan para santri.
                     </p>
                 </FadeContent>
+
                 {(() => {
                     let gallery = [];
                     try {
@@ -175,13 +137,13 @@ export default function MainArticle() {
                     }
 
                     return gallery.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {gallery.map((img, idx) => (
                                 <img
                                     key={idx}
                                     src={`https://ppmbki.ponpes.id/storage/${img}`}
                                     alt={`Galeri ${idx + 1}`}
-                                    className="w-full hover:scale-105 duration-300 transition-all cursor-pointer h-60 object-cover rounded-lg shadow-md"
+                                    className="w-full h-60 object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
                                 />
                             ))}
                         </div>
@@ -192,6 +154,7 @@ export default function MainArticle() {
                     );
                 })()}
             </div>
+
             {/* Komentar */}
             <CommentArticle articleId={id} />
             <ToastContainer position="top-right" autoClose={3000} />
