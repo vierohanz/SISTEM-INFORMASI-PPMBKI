@@ -10,7 +10,7 @@ class ArticleCommentController extends Controller
 {
     public function index($articleId)
     {
-        $comments = komentar_artikel::where('id_article', $articleId)
+        $comments = komentar_artikel::where('id_artikel_divisi', $articleId)
             ->whereNull('id_parent')
             ->with('replies.replies.replies')
             ->latest()
@@ -32,13 +32,13 @@ class ArticleCommentController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'konten' => 'required|string|max:255',
-            'id_parent' => 'nullable|integer|exists:komentar_article,id',
+            'id_parent' => 'nullable|integer|exists:komentar_artikel,id',
         ]);
 
         $article = artikel_divisi::findOrFail($id);
 
         $comment = komentar_artikel::create([
-            'id_article' => $article->id,
+            'id_artikel_divisi' => $article->id,
             'id_parent' => $request->id_parent,
             'nama' => $request->nama,
             'konten' => $request->konten,
