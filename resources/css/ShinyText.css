@@ -1,0 +1,41 @@
+.shiny-text {
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 1) 40%,
+        rgba(156, 163, 175, 0.8) 50%,
+        /* abu-abu (gray-400) */ rgba(255, 255, 255, 1) 60%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* penting agar bisa animasi teks */
+    text-fill-color: transparent;
+    display: inline-block;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.shiny-text.disabled {
+    animation: none;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: -100%;
+    }
+}
+
+.shiny-text.disabled {
+    animation: none;
+}

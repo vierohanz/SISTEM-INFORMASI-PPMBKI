@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\EventCommentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PSBController;
 use App\Http\Controllers\TamuController;
@@ -16,6 +17,10 @@ Route::get('/article/{id}', [ArtikelController::class, 'showAsId'])->name('artic
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/latest', [EventController::class, 'latest'])->name('event.latest');
 Route::get('/event/{id}', [EventController::class, 'showAsId'])->name('event.show');
+Route::get('/event/{id}/comments', [EventCommentController::class, 'index']);
+Route::get('/event/comments/{id}', [EventCommentController::class, 'show']);
+Route::post('/event/{id}/comments', [EventCommentController::class, 'store']);
+
 
 //PSB
 Route::get('/psb', [PSBController::class, 'index'])->name('psb.index');

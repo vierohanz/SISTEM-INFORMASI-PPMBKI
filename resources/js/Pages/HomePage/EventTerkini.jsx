@@ -13,7 +13,7 @@ export default function EventTerkini() {
     const navigate = useNavigate();
     const API_URL = import.meta.env.APP_URL;
     useEffect(() => {
-        fetch(`https://ppmbki.ponpes.id/api/event/latest`)
+        fetch(`http://127.0.0.1:8000/api/event/latest`)
             .then((res) => res.json())
             .then((data) => {
                 const cleaned = data.data.map((item) => {
@@ -22,13 +22,14 @@ export default function EventTerkini() {
                     try {
                         const parsedFoto = JSON.parse(item.foto);
                         image = Array.isArray(parsedFoto)
-                            ? `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`
+                            ? `http://127.0.0.1:8000/storage/${parsedFoto[0]}`
                             : "";
                     } catch (error) {
                         console.warn("Gagal parse foto:", item.foto, error);
                     }
 
                     return {
+                        id: item.id,
                         title: item.judul,
                         year: item.tahun,
                         status: item.status,
@@ -163,7 +164,14 @@ export default function EventTerkini() {
                                                     </div>
                                                 )}
 
-                                                <div className="relative z-20">
+                                                <div
+                                                    onClick={() =>
+                                                        navigate(
+                                                            `/event/${event.id}`
+                                                        )
+                                                    }
+                                                    className="relative z-20 cursor-pointer"
+                                                >
                                                     <EventCard
                                                         description={
                                                             event.description

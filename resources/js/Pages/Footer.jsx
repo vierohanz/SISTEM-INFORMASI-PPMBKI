@@ -1,23 +1,23 @@
 export default function Footer() {
     return (
         <footer className="bg-gradient-to-r from-emerald-500 to-teal-700 text-white">
-            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-6 gap-12">
+            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Logo dan Deskripsi */}
-                <div className="md:col-span-2 order-1">
+                <div>
                     <img
                         src="/images/logo ppm_full putih.png"
                         alt="Logo PPMBKI"
-                        className="h-12 mb-4"
+                        className="h-14 mb-4"
                     />
-                    <p className="text-sm leading-relaxed font-Inter text-white/90 max-w-md">
-                        PPMBKI Semarang adalah pondok pesantren mahasiswa yang
-                        berkomitmen mencetak generasi unggul, religius, dan
-                        berakhlakul karimah.
+                    <p className="text-sm leading-relaxed font-Inter text-white/90">
+                        PPM BKI Semarang adalah pondok pesantren mahasiswa yang
+                        berkomitmen mencetak generasi unggul, profesional,
+                        religius, dan berakhlakul karimah.
                     </p>
                 </div>
 
                 {/* Navigasi */}
-                <div className="order-2">
+                <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Navigasi
                     </h3>
@@ -42,7 +42,7 @@ export default function Footer() {
                 </div>
 
                 {/* Kontak */}
-                <div className="order-3">
+                <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Kontak
                     </h3>
@@ -58,15 +58,15 @@ export default function Footer() {
                 </div>
 
                 {/* Google Maps */}
-                <div className="md:col-span-2 order-4">
+                <div>
                     <h3 className="font-semibold text-lg font-Inter mb-4">
                         Lokasi
                     </h3>
-                    <div className="w-full h-48 md:h-56 rounded-lg overflow-hidden shadow-lg">
+                    <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d494.4311964809135!2d110.42008108758706!3d-7.04932303126834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDInNTYuOSJTIDExMMKwMjUnMTMuNSJF!5e0!3m2!1sid!2sid!4v1752468251142!5m2!1sid!2sid"
                             width="100%"
-                            height="100%"
+                            height="250"
                             style={{ border: 0 }}
                             allowFullScreen
                             loading="lazy"

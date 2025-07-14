@@ -6,6 +6,7 @@ import Article from "./ArticlePage/Article";
 import Psb from "./PsbPage/Psb";
 import Guest from "./GuestPage/Guest";
 import About from "./AboutPage/About";
+import MainEvent from "./EventPage/MainEvent";
 
 export default function Index() {
     return (
@@ -18,6 +19,7 @@ export default function Index() {
                     <Route path="/psb" element={<Psb />} />
                     <Route path="/layanan-tamu" element={<Guest />} />
                     <Route path="/tentang-kami" element={<About />} />
+                    <Route path="/event/:id" element={<MainEvent />} />
                 </Route>
             </Routes>
         </BrowserRouter>
