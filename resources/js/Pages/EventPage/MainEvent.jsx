@@ -124,7 +124,7 @@ export default function MainEvent() {
                 </AnimatedContent>
                 <AnimatedContent direction="horizontal">
                     {imageUrl && (
-                        <div className="flex justify-center">
+                        <div className="flex justify-center px-4 sm:px-0">
                             <TiltedCard
                                 imageSrc={imageUrl}
                                 rotateAmplitude={12}

@@ -117,7 +117,7 @@ export default function MainArticle() {
                         Galeri Artikel
                     </h3>
                     <p className="text-center text-gray-500 max-w-2xl mx-auto text-sm md:text-base mb-8">
-                        Dokumentasi kegiatan event ini yang memperlihatkan
+                        Dokumentasi artikel ini yang memperlihatkan
                         semangat dan kebersamaan para santri.
                     </p>
                 </FadeContent>
