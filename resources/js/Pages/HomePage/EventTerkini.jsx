@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function EventTerkini() {
     const [events, setEvents] = useState([]);
     const navigate = useNavigate();
-    const API_URL = import.meta.env.APP_URL;
+
     useEffect(() => {
         fetch(`https://ppmbki.ponpes.id/api/event/latest`)
             .then((res) => res.json())
@@ -62,7 +62,7 @@ export default function EventTerkini() {
                         <div className="z-30">
                             <FadeContent>
                                 <h1 className="text-black font-bold font-Inter text-2xl sm:text-3xl md:text-4xl mb-2">
-                                    Event Bulan Ini!
+                                    Event Terkini!
                                 </h1>
                             </FadeContent>
                             <FadeContent>

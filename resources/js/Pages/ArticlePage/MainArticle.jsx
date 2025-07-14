@@ -7,10 +7,10 @@ import TiltedCard from "../../Components/TiltedCard";
 import AnimatedContent from "../../Components/AnimatedContent";
 import FadeContent from "../../Components/FadeContent";
 import { FaSpinner } from "react-icons/fa";
-import CommentsEvent from "../../Components/CommentEvent";
-export default function MainEvent() {
+import CommentArticle from "../../Components/CommentArticle";
+export default function MainArticle() {
     const { id } = useParams();
-    const [event, setEvent] = useState(null);
+    const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
@@ -18,10 +18,10 @@ export default function MainEvent() {
     const [nama, setNama] = useState("");
 
     useEffect(() => {
-        fetch(`https://ppmbki.ponpes.id/api/event/${id}`)
+        fetch(`https://ppmbki.ponpes.id/api/article/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                setEvent(data.data);
+                setArticle(data.data);
                 setLoading(false);
             })
             .catch((err) => {
@@ -31,7 +31,7 @@ export default function MainEvent() {
     }, [id]);
 
     const fetchComments = () => {
-        fetch(`https://ppmbki.ponpes.id/api/event/${id}/comments`)
+        fetch(`https://ppmbki.ponpes.id/api/article/${id}/comments`)
             .then((res) => res.json())
             .then((data) => setComments(data.data || []))
             .catch((err) => console.error("Gagal ambil komentar:", err));
@@ -70,7 +70,7 @@ export default function MainEvent() {
                 </div>
             </div>
         ));
-    if (loading || !event) {
+    if (loading || !article) {
         return (
             <div className="flex flex-col items-center justify-center py-16">
                 <FaSpinner className="animate-spin text-emerald-500 text-4xl mb-4" />
@@ -83,12 +83,12 @@ export default function MainEvent() {
 
     let imageUrl = "";
     try {
-        const parsedFoto = JSON.parse(event.foto);
+        const parsedFoto = JSON.parse(article.foto);
         if (Array.isArray(parsedFoto) && parsedFoto.length > 0) {
             imageUrl = `https://ppmbki.ponpes.id/storage/${parsedFoto[0]}`;
         }
     } catch (error) {
-        console.warn("Gagal parse foto:", event.foto, error);
+        console.warn("Gagal parse foto:", article.foto, error);
     }
 
     return (
@@ -98,7 +98,7 @@ export default function MainEvent() {
                 <AnimatedContent>
                     <h1 className="text-4xl font-Inter md:text-6xl font-bold text-white drop-shadow-md">
                         <ShinyText
-                            text={event.judul}
+                            text={article.judul}
                             disabled={false}
                             speed={3}
                         />
@@ -106,7 +106,7 @@ export default function MainEvent() {
                 </AnimatedContent>
                 <FadeContent blur={true}>
                     <p className="text-white font-Inter text-lg md:text-2xl mt-2">
-                        {event.tahun || "Event Terbaru"}
+                        {article.tahun || "Event Terbaru"}
                     </p>
                 </FadeContent>
             </div>
@@ -115,10 +115,10 @@ export default function MainEvent() {
                 <AnimatedContent direction="horizontal" reverse={true}>
                     <div>
                         <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent mb-4">
-                            {event.judul}
+                            {article.judul}
                         </h2>
                         <p className="text-gray-700 leading-relaxed text-justify whitespace-pre-line text-sm md:text-base">
-                            {event.deskripsi}
+                            {article.deskripsi}
                         </p>
                     </div>
                 </AnimatedContent>
@@ -155,7 +155,7 @@ export default function MainEvent() {
                 {(() => {
                     let gallery = [];
                     try {
-                        const parsedFoto = JSON.parse(event.foto);
+                        const parsedFoto = JSON.parse(article.foto);
                         if (
                             Array.isArray(parsedFoto) &&
                             parsedFoto.length > 0
@@ -185,7 +185,7 @@ export default function MainEvent() {
                 })()}
             </div>
             {/* Komentar */}
-            <CommentsEvent eventId={id} />
+            <CommentArticle articleId={id} />
             <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );

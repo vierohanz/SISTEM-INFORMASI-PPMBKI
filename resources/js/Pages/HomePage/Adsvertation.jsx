@@ -4,8 +4,9 @@ import React from "react";
 import { cn } from "../../lib/utils";
 import AnimatedContent from "../../Components/AnimatedContent";
 import FadeContent from "../../Components/FadeContent";
-
+import { useNavigate } from "react-router-dom";
 export default function Advertation() {
+    const navigate = useNavigate();
     const features = [
         {
             icon: <BookOpen className="w-5 h-5" />,
@@ -79,13 +80,13 @@ export default function Advertation() {
                     ease="Power3.out"
                 >
                     <div className="mt-12">
-                        <a
-                            href="#"
-                            className="inline-flex items-center font-Inter gap-2 bg-white text-emerald-700 px-6 py-3 rounded-full font-medium shadow-lg hover:scale-105 hover:bg-gray-100 transition duration-300"
+                        <button
+                            onClick={() => navigate("/psb")}
+                            className="inline-flex items-center cursor-pointer font-Inter gap-2 bg-white text-emerald-700 px-6 py-3 rounded-full font-medium shadow-lg hover:scale-105 hover:bg-gray-100 transition duration-300"
                         >
                             Daftar Sekarang
                             <ArrowRight className="w-4 h-4" />
-                        </a>
+                        </button>
                     </div>
                 </AnimatedContent>
             </div>

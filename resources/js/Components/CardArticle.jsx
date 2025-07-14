@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 export default function ArticleCard({
+    id,
     imageLeft,
     imageRight,
     title,
@@ -23,7 +26,7 @@ export default function ArticleCard({
                 <h3 className="text-xl font-bold font-Inter text-gray-800">
                     {title}
                 </h3>
-                <p className="text-md font-Inter  text-gray-600 mt-2 line-clamp-4 lg:line-clamp-5">
+                <p className="text-md font-Inter text-gray-600 mt-2 line-clamp-4 lg:line-clamp-5">
                     {description}
                 </p>
 
@@ -31,9 +34,12 @@ export default function ArticleCard({
                     <p className="text-sm font-Inter text-gray-500 italic">
                         {divisi}
                     </p>
-                    <button className="bg-gradient-to-br from-emerald-400 to-teal-400 font-medium font-Inter hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded-lg text-sm  ">
+                    <Link
+                        to={`/article/${id}`}
+                        className="bg-gradient-to-br cursor-pointer from-emerald-400 to-teal-400 font-medium font-Inter hover:scale-105 transition-all duration-300 text-white px-4 py-2 rounded-lg text-sm"
+                    >
                         Lihat
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

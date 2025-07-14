@@ -3,22 +3,22 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-export default function CommentsEvent({ eventId }) {
+export default function CommentArticle({ articleId }) {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [replyTo, setReplyTo] = useState(null);
     const [nama, setNama] = useState("");
 
     const fetchComments = () => {
-        fetch(`https://ppmbki.ponpes.id/api/event/${eventId}/comments`)
+        fetch(`https://ppmbki.ponpes.id/api/article/${articleId}/comments`)
             .then((res) => res.json())
             .then((data) => setComments(data.data || []))
             .catch((err) => console.error("Gagal ambil komentar:", err));
     };
 
     useEffect(() => {
-        if (eventId) fetchComments();
-    }, [eventId]);
+        if (articleId) fetchComments();
+    }, [articleId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ export default function CommentsEvent({ eventId }) {
 
         try {
             const res = await fetch(
-                `https://ppmbki.ponpes.id/api/event/${eventId}/comments`,
+                `https://ppmbki.ponpes.id/api/article/${articleId}/comments`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

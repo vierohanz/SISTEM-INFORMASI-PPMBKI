@@ -9,8 +9,8 @@ import AnimatedContent from "../../Components/AnimatedContent";
 import ArticleCard from "../../Components/CardArticle";
 import { useNavigate } from "react-router-dom";
 export default function ArtikelTerkini() {
-    const [events, setEvents] = useState([]);
-    const API_URL = import.meta.env.APP_URL;
+    const [articles, setArticles] = useState([]);
+
     const navigate = useNavigate();
     useEffect(() => {
         fetch(`https://ppmbki.ponpes.id/api/article/latest`)
@@ -33,6 +33,7 @@ export default function ArtikelTerkini() {
                     }
 
                     return {
+                        id: item.id,
                         title: item.judul,
                         divisi: item.nama_divisi,
                         description: item.deskripsi,
@@ -42,7 +43,7 @@ export default function ArtikelTerkini() {
                     };
                 });
 
-                setEvents(cleaned);
+                setArticles(cleaned);
             })
 
             .catch((err) => console.error("Error fetching data:", err));
@@ -110,13 +111,15 @@ export default function ArtikelTerkini() {
                         <div className="max-w-screen-xl mx-auto  relative">
                             <div className="pointer-events-none absolute top-0 left-0 w-5 h-full z-10 bg-gradient-to-r from-[#fbfaff] to-transparent" />
                             <div className="pointer-events-none absolute top-0 right-0 w-5 h-full z-10 bg-gradient-to-l from-[#fbfaff] to-transparent" />
-                            {events.length > 0 && (
+                            {articles.length > 0 && (
                                 <Swiper
                                     modules={[Navigation, Pagination]}
                                     loop={true}
                                     centeredSlides={true}
                                     grabCursor={true}
-                                    initialSlide={Math.floor(events.length / 2)}
+                                    initialSlide={Math.floor(
+                                        articles.length / 2
+                                    )}
                                     slidesPerView={3}
                                     spaceBetween={60}
                                     pagination={{ clickable: true }}
@@ -143,7 +146,7 @@ export default function ArtikelTerkini() {
                                         },
                                     }}
                                 >
-                                    {events.map((event, index) => (
+                                    {articles.map((article, index) => (
                                         <SwiperSlide key={index}>
                                             {({ isActive, isPrev, isNext }) => (
                                                 <div className="transition-all mt-5 duration-500 ease-in-out transform relative">
@@ -161,21 +164,30 @@ export default function ArtikelTerkini() {
                                                         </div>
                                                     )}
 
-                                                    <div className="relative z-20">
+                                                    <div
+                                                        onClick={() =>
+                                                            navigate(
+                                                                `/article/${article.id}`
+                                                            )
+                                                        }
+                                                        className="relative z-20 cursor-pointer"
+                                                    >
                                                         <ArticleCard
                                                             imageLeft={
-                                                                event.imageLeft
+                                                                article.imageLeft
                                                             }
                                                             imageRight={
-                                                                event.imageRight
+                                                                article.imageRight
                                                             }
-                                                            title={event.title}
+                                                            title={
+                                                                article.title
+                                                            }
                                                             description={
-                                                                event.description
+                                                                article.description
                                                             }
-                                                            divisi={`Divisi ${event.divisi}`}
+                                                            divisi={`Divisi ${article.divisi}`}
                                                             tanggal={new Date(
-                                                                event.tanggal
+                                                                article.tanggal
                                                             ).toLocaleDateString(
                                                                 "id-ID",
                                                                 {

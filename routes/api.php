@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCommentController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\EventCommentController;
 use App\Http\Controllers\EventController;
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/article', [ArtikelController::class, 'index'])->name('article.index');
 Route::get('/article/latest', [ArtikelController::class, 'latest'])->name('article.latest');
 Route::get('/article/{id}', [ArtikelController::class, 'showAsId'])->name('article.show');
-
+Route::get('/article/{id}/comments', [ArticleCommentController::class, 'index']);
+Route::get('/article/comments/{id}', [ArticleCommentController::class, 'show']);
+Route::post('/article/{id}/comments', [ArticleCommentController::class, 'store']);
 //Event
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/latest', [EventController::class, 'latest'])->name('event.latest');
