@@ -14,12 +14,12 @@ export default function KampusTerdekat() {
     return (
         <section className="flex flex-col justify-center items-center mt-45 lg:mt-0">
             <div className="w-full flex flex-col items-center text-center mb-8 px-4 sm:px-6 md:px-0">
-                <FadeContent blur={true}>
+                <FadeContent>
                     <h1 className="text-black font-bold font-Inter text-2xl sm:text-3xl md:text-4xl mb-2">
                         Kampus Terdekat
                     </h1>
                 </FadeContent>
-                <FadeContent blur={true}>
+                <FadeContent>
                     <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
                         Berikut adalah kampus-kampus terdekat yang dapat menjadi
                         pengembangan diri bagi santri PPM BKI Semarang.

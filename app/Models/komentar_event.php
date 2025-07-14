@@ -32,6 +32,6 @@ class komentar_event extends Model
 
     public function replies()
     {
-        return $this->hasMany(self::class, 'id_parent');
+        return $this->hasMany(self::class, 'id_parent', 'id');
     }
 }

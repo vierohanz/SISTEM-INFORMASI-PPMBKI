@@ -2,7 +2,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import {
+    Home,
+    Calendar,
+    FileText,
+    Users,
+    Info,
+    ChevronRight,
+} from "lucide-react";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +38,7 @@ export default function Navbar() {
 
     return (
         <div
-            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-50 
+            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-50
         ${
             menuOpen
                 ? "bg-transparent"
@@ -147,7 +154,7 @@ export default function Navbar() {
                 }`}
             >
                 <div className="flex flex-col justify-between h-full px-6 py-10 overflow-y-auto">
-                    <ul className="flex flex-col items-start text-left font-Inter font-medium text-base gap-8 mt-15">
+                    <ul className="flex flex-col items-start text-left font-Inter font-medium text-base gap-12 mt-15">
                         {navItems.map((item) => (
                             <li key={item.name} className="w-full">
                                 {item.name === "Event" ? (
@@ -160,7 +167,13 @@ export default function Navbar() {
                                             }
                                             className="w-full text-black text-lg font-semibold tracking-wide flex justify-between items-center"
                                         >
-                                            Event
+                                            <div className="flex items-center gap-3">
+                                                <Calendar
+                                                    size={20}
+                                                    color="#059669"
+                                                />
+                                                Event
+                                            </div>
                                             <ChevronRight
                                                 className={`ml-2 text-emerald-600 transition-transform duration-300 ${
                                                     eventDropdownOpen
@@ -231,44 +244,29 @@ export default function Navbar() {
                                             setMenuOpen(false);
                                             navigate(item.path);
                                         }}
-                                        className="text-black text-lg font-semibold tracking-wide w-full text-left hover:text-emerald-600 transition-all"
+                                        className="text-black text-lg font-semibold tracking-wide w-full text-left hover:text-emerald-600 transition-all flex items-center gap-3"
                                     >
+                                        {item.name === "Home" && (
+                                            <Home size={20} color="#059669" />
+                                        )}
+                                        {item.name === "Artikel" && (
+                                            <FileText
+                                                size={20}
+                                                color="#059669"
+                                            />
+                                        )}
+                                        {item.name === "Layanan Tamu" && (
+                                            <Users size={20} color="#059669" />
+                                        )}
+                                        {item.name === "Tentang Kami" && (
+                                            <Info size={20} color="#059669" />
+                                        )}
                                         {item.name}
                                     </button>
                                 )}
                             </li>
                         ))}
                     </ul>
-                    {/* <div className="flex  bottom-0 justify-center">
-                        <ul className="flex gap-5 items-center mb-8">
-                            <li className="mr-1">
-                                <a
-                                    href="https://www.instagram.com/ppmbkisemarang/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img
-                                        src="/images/instagram.png"
-                                        alt="Instagram Logo"
-                                        className="w-7 h-7"
-                                    />
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="mailto:humedgemes@gmail.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <img
-                                        src="/images/email.png"
-                                        alt="Email Logo"
-                                        className="w-8 h-9"
-                                    />
-                                </a>
-                            </li>
-                        </ul>
-                    </div> */}
                 </div>
             </div>
         </div>
