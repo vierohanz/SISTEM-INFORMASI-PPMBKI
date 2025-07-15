@@ -50,7 +50,7 @@ export default function Event() {
 
     return (
         <section className="overflow-x-hidden overflow-y-hidden relative w-full">
-            <div className="relative h-[100rem] lg:h-[130rem] w-full max-w-[100vw]">
+            <div className="relative h-[95rem] lg:h-[130rem] w-full max-w-[100vw]">
                 <div className="absolute top-[-150px] left-[-150px] w-[400px] h-[400px] sm:top-[-250px] sm:left-[-250px] sm:w-[800px] sm:h-[750px] bg-teal-100 rounded-full opacity-50 blur-3xl z-0" />
                 <div className="absolute z-5 bottom-1 right-[-10px] w-[400px] h-[400px] sm:bottom-[-300px] sm:right-[-300px] sm:w-[780px] sm:h-[700px] bg-teal-100 rounded-full opacity-50 blur-3xl" />
 
