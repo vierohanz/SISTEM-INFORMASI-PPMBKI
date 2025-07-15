@@ -65,7 +65,7 @@ class EventDivisiResource extends Resource
                         FileUpload::make('foto')
                             ->label('Foto')
                             ->maxSize(1000)
-                            ->maxFiles(3)
+                            ->maxFiles(6)
                             ->directory('uploads/foto')
                             ->image()
                             ->multiple()
