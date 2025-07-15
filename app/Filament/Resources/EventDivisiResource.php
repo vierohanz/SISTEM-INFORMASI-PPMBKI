@@ -86,8 +86,10 @@ class EventDivisiResource extends Resource
                                 'Aktif' => 'success',
                                 'Tidak Aktif' => 'danger',
                             ]),
-                        RichEditor::make('deskripsi')
+                         Te::make('deskripsi')
                             ->label('Deskripsi')
+                            ->rows(10)
+                            ->cols(20)
                             ->required(),
                         TextInput::make('tahun')
                             ->label('Tahun')
