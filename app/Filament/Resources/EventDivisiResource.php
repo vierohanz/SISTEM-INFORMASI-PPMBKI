@@ -86,7 +86,7 @@ class EventDivisiResource extends Resource
                                 'Aktif' => 'success',
                                 'Tidak Aktif' => 'danger',
                             ]),
-                         Te::make('deskripsi')
+                        Textarea::make('deskripsi')
                             ->label('Deskripsi')
                             ->rows(10)
                             ->cols(20)
