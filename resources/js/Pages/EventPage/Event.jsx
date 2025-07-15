@@ -91,7 +91,7 @@ export default function Event() {
                                 </h3>
                             </FadeContent>
                             <FadeContent>
-                                <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
+                                <p className="text-gray-600 mt-2 text-sm sm:text-lg md:text-xl font-Inter max-w-xl">
                                     Beragam kegiatan seru dan inspiratif setiap
                                     <br />
                                     tahunnya di{" "}
