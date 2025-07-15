@@ -38,7 +38,7 @@ export default function Navbar() {
 
     return (
         <div
-            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-50
+            className={`fixed top-0 left-0 w-full px-4 md:px-14 py-5 flex items-center justify-between z-90
         ${
             menuOpen
                 ? "bg-transparent"
