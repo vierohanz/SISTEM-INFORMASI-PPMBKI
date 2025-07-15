@@ -71,10 +71,11 @@ class ArtikelDivisiResource extends Resource
                         DatePicker::make('tanggal_upload')
                             ->label('Tanggal Upload')
                             ->required(),
-                        RichEditor::make('deskripsi')
+                        Textarea::make('deskripsi')
                             ->label('Deskripsi')
-                            ->required()
-
+                            ->rows(10)
+                            ->cols(20)
+                            ->required(),
                     ]),
 
                 // Section::make('Detail Tambahan')
