@@ -4,11 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Parallax, Autoplay, Navigation } from "swiper/modules";
 import { ChevronDown, Calendar, Filter } from "lucide-react";
 import { motion } from "framer-motion";
+import FadeContent from "../../Components/FadeContent";
 
 import "swiper/css";
 import "swiper/css/parallax";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
+import AnimatedContent from "../../Components/AnimatedContent";
 
 export default function Article() {
     const DIVISION_ORDER = ["KEMAHASISWAAN", "HUMED", "DIVOR", "HSC", "RT"];
@@ -30,22 +32,16 @@ export default function Article() {
 
     const [articles, setArticles] = useState([]);
     const [filteredArticles, setFilteredArticles] = useState([]);
-
-    // multi-select states
     const [selectedDivisions, setSelectedDivisions] = useState([]);
     const [selectedMonths, setSelectedMonths] = useState([]);
-
     const [sortOrder, setSortOrder] = useState("Terbaru");
-
-    // dropdown open/close
     const [openDivMenu, setOpenDivMenu] = useState(false);
     const [openMonMenu, setOpenMonMenu] = useState(false);
-
     const navigate = useNavigate();
     const divMenuRef = useRef();
     const monMenuRef = useRef();
 
-    // ambil data artikel
+    // data artikel
     useEffect(() => {
         fetch("https://ppmbki.ponpes.id/api/article")
             .then((res) => res.json())
@@ -96,8 +92,6 @@ export default function Article() {
                 selectedMonths.includes(a.monthName)
             );
         }
-
-        // ✅ Perbaikan di sini
         filtered.sort((a, b) =>
             sortOrder === "Terlama"
                 ? new Date(b.tanggal_upload) - new Date(a.tanggal_upload)
@@ -140,75 +134,80 @@ export default function Article() {
     return (
         <section>
             {/* Parallax Slider */}
-            <div className="relative w-full h-[30rem] lg:h-[32rem]">
-                <Swiper
-                    modules={[Parallax, Autoplay, Navigation]}
-                    speed={1000}
-                    parallax
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    navigation={{
-                        nextEl: ".custom-next",
-                        prevEl: ".custom-prev",
-                    }}
-                    className="w-full h-full"
-                >
-                    {(filteredArticles.length ? filteredArticles : articles)
-                        .slice(0, 5)
-                        .map((article, i) => (
-                            <SwiperSlide key={article.id + i}>
-                                <div
-                                    onClick={() =>
-                                        navigate(`/article/${article.id}`)
-                                    }
-                                    className="h-full w-full bg-cover bg-center relative text-white flex flex-col justify-end px-6 py-12 sm:px-12 cursor-pointer"
-                                    style={{
-                                        backgroundImage: `url(${article.image})`,
-                                    }}
-                                >
-                                    <div className="absolute inset-0 bg-black/50" />
+            <AnimatedContent>
+                <div className="relative w-full h-[30rem] lg:h-[32rem]">
+                    <Swiper
+                        modules={[Parallax, Autoplay, Navigation]}
+                        speed={1000}
+                        parallax
+                        autoplay={{ delay: 5000, disableOnInteraction: false }}
+                        navigation={{
+                            nextEl: ".custom-next",
+                            prevEl: ".custom-prev",
+                        }}
+                        className="w-full h-full"
+                    >
+                        {(filteredArticles.length ? filteredArticles : articles)
+                            .slice(0, 5)
+                            .map((article, i) => (
+                                <SwiperSlide key={article.id + i}>
                                     <div
-                                        className="relative z-10"
-                                        data-swiper-parallax="-200"
+                                        onClick={() =>
+                                            navigate(`/article/${article.id}`)
+                                        }
+                                        className="h-full w-full bg-cover bg-center relative text-white flex flex-col justify-end px-6 py-12 sm:px-12 cursor-pointer"
+                                        style={{
+                                            backgroundImage: `url(${article.image})`,
+                                        }}
                                     >
-                                        <span className="inline-block text-xs bg-red-500 text-white px-2 py-1 rounded-full mb-2">
-                                            {article.divisi}
-                                        </span>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-                                            {article.title}
-                                        </h2>
-                                        <p
-                                            className="max-w-3xl text-gray-200 text-sm sm:text-base md:text-lg"
-                                            data-swiper-parallax="-100"
+                                        <div className="absolute inset-0 bg-black/50" />
+                                        <div
+                                            className="relative z-10"
+                                            data-swiper-parallax="-200"
                                         >
-                                            {article.description.slice(0, 250)}
-                                            ...
-                                        </p>
-                                        <div className="mt-4 flex items-center text-sm text-gray-300">
-                                            <Calendar
-                                                size={16}
-                                                className="mr-2"
-                                            />
-                                            {article.date.toLocaleDateString(
-                                                "id-ID",
-                                                {
-                                                    day: "numeric",
-                                                    month: "long",
-                                                    year: "numeric",
-                                                }
-                                            )}
+                                            <span className="inline-block text-xs bg-red-500 text-white px-2 py-1 rounded-full mb-2">
+                                                {article.divisi}
+                                            </span>
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                                                {article.title}
+                                            </h2>
+                                            <p
+                                                className="max-w-3xl text-gray-200 text-sm sm:text-base md:text-lg"
+                                                data-swiper-parallax="-100"
+                                            >
+                                                {article.description.slice(
+                                                    0,
+                                                    250
+                                                )}
+                                                ...
+                                            </p>
+                                            <div className="mt-4 flex items-center text-sm text-gray-300">
+                                                <Calendar
+                                                    size={16}
+                                                    className="mr-2"
+                                                />
+                                                {article.date.toLocaleDateString(
+                                                    "id-ID",
+                                                    {
+                                                        day: "numeric",
+                                                        month: "long",
+                                                        year: "numeric",
+                                                    }
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    <div className="custom-prev absolute left-12 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer z-20 hover:text-gray-300">
-                        ❮
-                    </div>
-                    <div className="custom-next absolute right-12 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer z-20 hover:text-gray-300">
-                        ❯
-                    </div>
-                </Swiper>
-            </div>
+                                </SwiperSlide>
+                            ))}
+                        <div className="custom-prev absolute left-12 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer z-20 hover:text-gray-300">
+                            ❮
+                        </div>
+                        <div className="custom-next absolute right-12 top-1/2 -translate-y-1/2 text-white text-3xl cursor-pointer z-20 hover:text-gray-300">
+                            ❯
+                        </div>
+                    </Swiper>
+                </div>
+            </AnimatedContent>
 
             {/* Filter Section */}
             <div className="bg-white py-6 px-4 sm:px-12 border-b border-gray-200">
@@ -216,22 +215,24 @@ export default function Article() {
                     {/* Filter Title */}
                     <div className="flex items-center gap-2">
                         <Filter size={20} className="text-gray-600" />
-                        <span className="text-gray-800 font-semibold text-lg">
+                        <span className="text-gray-800 font-Inter font-semibold text-lg">
                             Filter
                         </span>
                     </div>
 
                     {/* Sort Buttons */}
                     <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-gray-600 text-sm">Urutkan:</span>
+                        <span className="text-gray-600 font-Inter text-sm">
+                            Urutkan:
+                        </span>
                         {["Terbaru", "Terlama"].map((label) => (
                             <button
                                 key={label}
                                 onClick={() => setSortOrder(label)}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out ${
                                     sortOrder === label
-                                        ? "bg-green-500 text-white"
-                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                        ? "bg-green-500 font-Inter text-white"
+                                        : "bg-gray-100 font-Inter text-gray-700 hover:bg-gray-200"
                                 }`}
                             >
                                 {label}
@@ -245,7 +246,7 @@ export default function Article() {
                             onClick={() => setOpenDivMenu((o) => !o)}
                             className="flex items-center gap-2 bg-white rounded-xl px-4 py-2 shadow-sm transition-all duration-300 ease-in-out"
                         >
-                            <span className="text-sm text-gray-700">
+                            <span className="text-sm font-Inter text-gray-700">
                                 {selectedDivisions.length > 0
                                     ? selectedDivisions.join(", ")
                                     : "Semua Divisi"}
@@ -315,7 +316,7 @@ export default function Article() {
 
                     {/* Artikel Ditemukan */}
                     <div className="sm:ml-auto">
-                        <span className="text-sm text-gray-600 whitespace-nowrap">
+                        <span className="text-sm font-Inter text-gray-600 whitespace-nowrap">
                             {filteredArticles.length} artikel ditemukan
                         </span>
                     </div>
