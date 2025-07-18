@@ -68,6 +68,7 @@ export default function Article() {
                         divisi: item.nama_divisi,
                         image,
                         date: new Date(item.tanggal_upload),
+                        tanggal_upload: item.tanggal_upload,
                         monthName:
                             months[
                                 new Date(item.tanggal_upload).getMonth() + 1
@@ -89,15 +90,20 @@ export default function Article() {
                 selectedDivisions.includes(a.divisi)
             );
         }
+
         if (selectedMonths.length > 0) {
             filtered = filtered.filter((a) =>
                 selectedMonths.includes(a.monthName)
             );
         }
 
+        // ✅ Perbaikan di sini
         filtered.sort((a, b) =>
-            sortOrder === "Terbaru" ? b.date - a.date : a.date - b.date
+            sortOrder === "Terlama"
+                ? new Date(b.tanggal_upload) - new Date(a.tanggal_upload)
+                : new Date(a.tanggal_upload) - new Date(b.tanggal_upload)
         );
+
         setFilteredArticles(filtered);
     }, [articles, selectedDivisions, selectedMonths, sortOrder]);
 
