@@ -23,8 +23,6 @@ Route::get('/event/{id}', [EventController::class, 'showAsId'])->name('event.sho
 Route::get('/event/{id}/comments', [EventCommentController::class, 'index']);
 Route::get('/event/comments/{id}', [EventCommentController::class, 'show']);
 Route::post('/event/{id}/comments', [EventCommentController::class, 'store']);
-
-
 //PSB
 Route::get('/psb', [PSBController::class, 'index'])->name('psb.index');
 Route::get('/psb/latest', [PSBController::class, 'latest'])->name('psb.latest');
