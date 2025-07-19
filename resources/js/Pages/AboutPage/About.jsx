@@ -102,10 +102,11 @@ export default function About() {
                         <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-200 mb-2">
                             Visi
                         </h3>
-                        <TextGenerateEffect
-                            words={`"Mencetak generasi mahasiswa berakhlak mulia, berilmu luas,dan siap menjadi pemimpin amanah di tengah masyarakat."`}
-                            className="text-center whitespace-pre-line text-white italic max-w-3xl mx-auto text-sm sm:text-base md:text-lg font-Inter  lg:text-xl"
-                        />
+                        <p className="text-center whitespace-pre-line text-white italic max-w-3xl mx-auto text-sm sm:text-base md:text-lg font-Inter  lg:text-xl">
+                            “Mencetak generasi mahasiswa berakhlak mulia,
+                            berilmu luas, dan siap menjadi pemimpin amanah di
+                            tengah masyarakat.”
+                        </p>
                     </div>
 
                     {/* Misi */}
@@ -214,15 +215,15 @@ export default function About() {
                             />
                         </div>
                         {/* DIVISI */}
-                        <div className="mt-12 py-7 px-4 sm:px-6 lg:px-1 text-center bg-gradient-to-br from-emerald-500 to-teal-400">
+                        <div className="mt-12 py-7 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-br from-emerald-500 to-teal-400">
                             <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-200 mb-2">
                                 Divisi
                             </h3>
-
-                            <TextGenerateEffect
-                                words="Mencetak generasi mahasiswa yang berakhlak mulia, berilmu luas, dan siap menjadi pemimpin yang amanah dalam kehidupan bermasyarakat."
-                                className="text-sm sm:text-base md:text-lg lg:text-xl text-white italic max-w-3xl mx-auto text-center"
-                            />
+                            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white italic leading-relaxed max-w-3xl mx-auto">
+                                “Mencetak generasi mahasiswa yang berakhlak
+                                mulia, berilmu luas, dan siap menjadi pemimpin
+                                yang amanah dalam kehidupan bermasyarakat.”
+                            </p>
                         </div>
                     </div>
                     {/* LIST DIVISI */}
@@ -254,7 +255,7 @@ export default function About() {
 
                         <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300">
                             <img
-                                src="/images/rt.png"
+                                src="/images/RT.png"
                                 alt="RT"
                                 className="w-14 h-14 mb-4 mx-auto"
                             />
@@ -272,7 +273,7 @@ export default function About() {
 
                         <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300">
                             <img
-                                src="/images/humed.png"
+                                src="/images/HUMED.png"
                                 alt="HUMED"
                                 className="w-14 h-14 mb-4 mx-auto"
                             />
