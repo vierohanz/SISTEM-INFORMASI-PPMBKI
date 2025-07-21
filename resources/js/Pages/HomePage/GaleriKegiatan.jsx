@@ -14,9 +14,10 @@ export default function GaleriKegiatan() {
                     </FadeContent>
                     <FadeContent>
                         <p className="text-gray-600 mt-2 text-base sm:text-lg md:text-xl font-Inter max-w-xl">
-                            Berikut adalah kampus-kampus terdekat yang dapat
-                            menjadi pengembangan diri bagi santri PPM BKI
-                            Semarang.
+                            Berikut adalah Galeri kegiatan yang telah
+                            dilaksanakan oleh PPM BKI Semarang. Kegiatan ini
+                            bagian dari upaya kami untuk meningkatkan kualitas
+                            pendidikan dan pengembangan.
                         </p>
                     </FadeContent>
                 </div>
