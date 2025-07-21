@@ -178,7 +178,7 @@ export default function About() {
                                     },
                                     {
                                         title: "GSG",
-                                        image: "/images/GSG.JPG",
+                                        image: "/images/gsg.jpg",
                                         isActive: false,
                                     },
                                     {
