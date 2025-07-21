@@ -168,47 +168,47 @@ export default function About() {
                                 items={[
                                     {
                                         title: "ASRAMA",
-                                        image: "/images/Osaka_2024.jpg",
+                                        image: "/images/ASRAMA.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "AULA",
-                                        image: "/images/Psb_2024.jpg",
+                                        image: "/images/AULA.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "GSG",
-                                        image: "/images/Cai_2024.jpg",
+                                        image: "/images/GSG.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "MASJID",
-                                        image: "/images/Takjil_2024.jpg",
+                                        image: "/images/MASJID.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "BASEMENT",
-                                        image: "/images/Faganza_2024.jpg",
+                                        image: "/images/BASEMENT.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "ROOFTOP",
-                                        image: "/images/Bukber_2024.jpg",
+                                        image: "/images/ROOFTOP.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "DAPUR",
-                                        image: "/images/Takjil_2024.jpg",
+                                        image: "/images/DAPUR.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "TEMPAT CUCI",
-                                        image: "/images/Faganza_2024.jpg",
+                                        image: "/images/TEMPAT_CUCI.JPG",
                                         isActive: false,
                                     },
                                     {
                                         title: "UB MART",
-                                        image: "/images/Bukber_2024.jpg",
+                                        image: "/images/UB.JPG",
                                         isActive: false,
                                     },
                                 ]}
