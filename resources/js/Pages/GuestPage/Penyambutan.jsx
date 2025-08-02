@@ -30,7 +30,18 @@ export default function Penyambutan() {
                             kunjungan resmi. Nikmati proses pemesanan yang cepat
                             dan efisien.
                         </p>
-                        <button className="bg-emerald-500 cursor-pointer hover:bg-teal-500 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+                        <button
+                            onClick={() => {
+                                const element =
+                                    document.getElementById("tujuanScroll");
+                                if (element) {
+                                    element.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                }
+                            }}
+                            className="bg-emerald-500 cursor-pointer hover:bg-teal-500 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"

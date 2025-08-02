@@ -146,7 +146,7 @@ const handleSubmit = async (e) => {
     }, 3000);
 };
     return (
-        <div className="bg-white py-10 px-6 md:px-24">
+        <div id="tujuanScroll" className="bg-white py-10 px-6 md:px-24">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
                 Form Booking Tamu
             </h2>
