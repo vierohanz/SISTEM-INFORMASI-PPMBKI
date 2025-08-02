@@ -223,16 +223,16 @@ export default function Navbar() {
                                                     </button>
 
                                                     <button
-                                                        onClick={() => {
-                                                            setMenuOpen(false);
-                                                            setEventDropdownOpen(
-                                                                false
-                                                            );
-                                                            navigate("/psb");
-                                                        }}
+                                                        // onClick={() => {
+                                                        //     setMenuOpen(false);
+                                                        //     setEventDropdownOpen(
+                                                        //         false
+                                                        //     );
+                                                        //     navigate("/psb");
+                                                        // }}
                                                         className="relative text-md text-gray-800 hover:text-emerald-600 transition-colors before:content-[''] before:absolute before:-left-4 before:bg-emerald-500 "
                                                     >
-                                                        PSB
+                                                        PSB (Maintenance)
                                                     </button>
                                                 </motion.div>
                                             )}
