@@ -89,10 +89,10 @@ export default function Navbar() {
                                         </li>
                                         <li>
                                             <Link
-                                                to="/psb"
+                                                // to="/psb"
                                                 className="block px-4 py-2 hover:bg-emerald-100 text-[11px] text-gray-500"
                                             >
-                                                PSB
+                                                PSB (Maintenance)
                                             </Link>
                                         </li>
                                     </motion.ul>
