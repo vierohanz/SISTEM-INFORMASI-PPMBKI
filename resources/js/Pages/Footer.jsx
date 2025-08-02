@@ -53,7 +53,7 @@ export default function Footer() {
                             Tengah 50269
                         </li>
                         <li>Email: ppmbki.smg@gmail.com</li>
-                        <li>Telp: 0895-0446-9254</li>
+                        <li>Telp: 0813-5991-8191</li>
                     </ul>
                 </div>
 
