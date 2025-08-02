@@ -6,148 +6,145 @@ import { format } from "date-fns";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Select from "react-select";
-import { FaBook, FaBookOpen, FaGraduationCap, FaMosque } from "react-icons/fa";
 
 export default function FormSubmit(){
-        const [loading, setLoading] = useState(false);
-        const [formData, setFormData] = useState({
-            id_layanan_tamu: "",
-            nama_tamu: "",
-            phone: "",
-            tanggal_datang: null,
-            tanggal_keluar: null,
-            kuantitas: "",
-            deskripsi: "",
-        });
-        const [kamarList, setKamarList] = useState([]);
-        const kamarOptions = kamarList.map((kamar) => ({
-            value: kamar.id,
-            label: `${kamar.nama_kamar} - Kapasitas ${kamar.kapasitas}`,
-        }));
-        const customStyles = {
-            control: (provided, state) => ({
-                ...provided,
-                padding: "0.25rem 0.5rem",
-                fontSize: "0.875rem",
-                borderRadius: "0.375rem",
-                borderColor: state.isFocused ? "#10b981" : "#000",
-                boxShadow: state.isFocused
-                    ? "0 0 0 2px rgba(16, 185, 129, 0.5)"
-                    : "none",
-                "&:hover": {
-                    borderColor: "#10b981",
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        id_layanan_tamu: "",
+        nama_tamu: "",
+        phone: "",
+        tanggal_datang: null,
+        tanggal_keluar: null,
+        kuantitas: "",
+        deskripsi: "",
+    });
+    const [kamarList, setKamarList] = useState([]);
+    const kamarOptions = kamarList.map((kamar) => ({
+    value: kamar.id,
+    label: `${kamar.nama_kamar} - Kapasitas ${kamar.kapasitas}`,
+    }));
+    const customStyles = {
+        control: (provided, state) => ({
+            ...provided,
+            padding: "0.25rem 0.5rem",
+            fontSize: "0.875rem",
+            borderRadius: "0.375rem",
+            borderColor: state.isFocused ? "#10b981" : "#000",
+            boxShadow: state.isFocused
+                ? "0 0 0 2px rgba(16, 185, 129, 0.5)"
+                : "none",
+            "&:hover": {
+                borderColor: "#10b981",
+            },
+        }),
+        option: (provided, state) => ({
+            ...provided,
+            backgroundColor: state.isSelected
+                ? "#10b981"
+                : state.isFocused
+                ? "#d1fae5"
+                : undefined,
+            color: state.isSelected ? "white" : "#111827",
+            fontSize: "0.875rem",
+            padding: "0.5rem 1rem",
+        }),
+        menu: (provided) => ({
+            ...provided,
+            zIndex: 50,
+        }),
+        singleValue: (provided) => ({
+            ...provided,
+            color: "#111827",
+        }),
+    };
+
+useEffect(() => {
+    const fetchKamar = async () => {
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/api/tamu");
+            setKamarList(res.data.data);
+        } catch (error) {
+            console.error("Gagal fetch kamar:", error);
+        }
+    };
+    fetchKamar();
+}, []);
+
+ const handleChange = (e) => {
+     const { name, value } = e.target;
+     setFormData((prev) => ({ ...prev, [name]: value }));
+ };
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const kamarTerpilih = kamarList.find(
+        (k) => k.id === parseInt(formData.id_layanan_tamu)
+    );
+
+    if (!kamarTerpilih) {
+        toast.error("Kamar tidak valid.");
+        return;
+    }
+
+    const kuantitas = parseInt(formData.kuantitas);
+    if (kuantitas > kamarTerpilih.kapasitas) {
+        toast.warning(
+            `Kuantitas melebihi kapasitas (${kamarTerpilih.kapasitas}).`
+        );
+        return;
+    }
+
+    const datang = new Date(formData.tanggal_datang);
+    const keluar = new Date(formData.tanggal_keluar);
+    if (datang >= keluar) {
+        toast.error("Tanggal Datang harus sebelum Tanggal Keluar.");
+        return;
+    }
+
+    const formattedTanggalDatang = format(datang, "yyyy-MM-dd");
+    const formattedTanggalKeluar = format(keluar, "yyyy-MM-dd");
+
+    setLoading(true);
+
+    setTimeout(async () => {
+        try {
+            await axios.post(
+                `http://127.0.0.1:8000/api/tamu/${formData.id_layanan_tamu}/booking`,
+                {
+                    nama_tamu: formData.nama_tamu,
+                    phone: formData.phone,
+                    tanggal_datang: formattedTanggalDatang,
+                    tanggal_keluar: formattedTanggalKeluar,
+                    kuantitas: formData.kuantitas,
+                    deskripsi: formData.deskripsi,
                 },
-            }),
-            option: (provided, state) => ({
-                ...provided,
-                backgroundColor: state.isSelected
-                    ? "#10b981"
-                    : state.isFocused
-                    ? "#d1fae5"
-                    : undefined,
-                color: state.isSelected ? "white" : "#111827",
-                fontSize: "0.875rem",
-                padding: "0.5rem 1rem",
-            }),
-            menu: (provided) => ({
-                ...provided,
-                zIndex: 50,
-            }),
-            singleValue: (provided) => ({
-                ...provided,
-                color: "#111827",
-            }),
-        };
-
-        useEffect(() => {
-            const fetchKamar = async () => {
-                try {
-                    const res = await axios.get(
-                        "https://ppmbki.ponpes.id/api/tamu"
-                    );
-                    setKamarList(res.data.data);
-                } catch (error) {
-                    console.error("Gagal fetch kamar:", error);
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
-            };
-            fetchKamar();
-        }, []);
-
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormData((prev) => ({ ...prev, [name]: value }));
-        };
-
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-
-            const kamarTerpilih = kamarList.find(
-                (k) => k.id === parseInt(formData.id_layanan_tamu)
             );
 
-            if (!kamarTerpilih) {
-                toast.error("Kamar tidak valid.");
-                return;
-            }
+            toast.success("Booking berhasil disimpan!");
+        } catch (error) {
+            console.error(error.response?.data || error.message);
 
-            const kuantitas = parseInt(formData.kuantitas);
-            if (kuantitas > kamarTerpilih.kapasitas) {
-                toast.warning(
-                    `Kuantitas melebihi kapasitas (${kamarTerpilih.kapasitas}).`
+            if (
+                error.response?.data?.message &&
+                error.response?.data?.message.includes("dibooking")
+            ) {
+                toast.error(
+                    "Gagal booking: kamar sudah dibooking pada tanggal itu."
                 );
-                return;
+            } else {
+                toast.error("Gagal booking. Cek koneksi atau data.");
             }
-
-            const datang = new Date(formData.tanggal_datang);
-            const keluar = new Date(formData.tanggal_keluar);
-            if (datang >= keluar) {
-                toast.error("Tanggal Datang harus sebelum Tanggal Keluar.");
-                return;
-            }
-
-            const formattedTanggalDatang = format(datang, "yyyy-MM-dd");
-            const formattedTanggalKeluar = format(keluar, "yyyy-MM-dd");
-
-            setLoading(true);
-
-            setTimeout(async () => {
-                try {
-                    await axios.post(
-                        `https://ppmbki.ponpes.id/api/tamu/${formData.id_layanan_tamu}/booking`,
-                        {
-                            nama_tamu: formData.nama_tamu,
-                            phone: formData.phone,
-                            tanggal_datang: formattedTanggalDatang,
-                            tanggal_keluar: formattedTanggalKeluar,
-                            kuantitas: formData.kuantitas,
-                            deskripsi: formData.deskripsi,
-                        },
-                        {
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                        }
-                    );
-
-                    toast.success("Booking berhasil disimpan!");
-                } catch (error) {
-                    console.error(error.response?.data || error.message);
-
-                    if (
-                        error.response?.data?.message &&
-                        error.response?.data?.message.includes("dibooking")
-                    ) {
-                        toast.error(
-                            "Gagal booking: kamar sudah dibooking pada tanggal itu."
-                        );
-                    } else {
-                        toast.error("Gagal booking. Cek koneksi atau data.");
-                    }
-                } finally {
-                    setLoading(false);
-                }
-            }, 3000);
-        };
+        } finally {
+            setLoading(false);
+        }
+    }, 3000);
+};
     return (
         <div className="bg-white py-10 px-6 md:px-24">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">

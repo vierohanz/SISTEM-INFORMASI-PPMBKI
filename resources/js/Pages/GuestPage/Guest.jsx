@@ -1,5 +1,14 @@
+import { useEffect, useState } from "react";
+import { FaBook, FaBookOpen, FaGraduationCap, FaMosque } from "react-icons/fa";
 import AnimatedContent from "../../Components/AnimatedContent";
 import ShinyText from "../../Components/ShinyText";
+import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Select from "react-select";
 import Penyambutan from "./Penyambutan";
 import ListSewa from "./ListSewa";
 import FormSubmit from "./FormSubmit";
@@ -7,6 +16,7 @@ import FormSubmit from "./FormSubmit";
 export default function Guest() {
     return (
         <div className="w-full font-Inter overflow-x-hidden">
+            {/* Hero Section */}
             <div className="w-full h-[250px] md:h-[570px] flex flex-col justify-center items-center text-center bg-[url('/images/MainEvent.png')] bg-no-repeat bg-cover bg-center">
                 <AnimatedContent>
                     <h1 className="text-4xl md:text-8xl font-bold text-white">
@@ -31,7 +41,7 @@ export default function Guest() {
 
             <Penyambutan />
             <ListSewa/>
-            <FormSubmit />
+            <FormSubmit/>
         </div>
     );
 }
