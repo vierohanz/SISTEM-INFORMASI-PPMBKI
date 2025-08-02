@@ -20,7 +20,7 @@ export default function Index() {
                     <Route path="/" element={<Home />} />
                     <Route path="/event" element={<Event />} />
                     <Route path="/artikel" element={<Article />} />
-                    <Route path="/psb" element={<Psb />} />
+                    {/* <Route path="/psb" element={<Psb />} /> */}
                     <Route path="/layanan-tamu" element={<Guest />} />
                     <Route path="/tentang-kami" element={<About />} />
                     <Route path="/event/:id" element={<MainEvent />} />
