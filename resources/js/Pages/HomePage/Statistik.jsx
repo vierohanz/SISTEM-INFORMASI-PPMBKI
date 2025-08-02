@@ -4,10 +4,10 @@ import FadeContent from "../../Components/FadeContent";
 import SpotlightCard from "../../Components/SpotlightCard";
 
 const statistik = [
-    { label: "Jumlah Santri", value: "354" },
+    { label: "Jumlah Santri", value: "173" },
     { label: "Jumlah Guru", value: "9" },
-    { label: "Lulusan Mubaligh", value: "192" },
-    { label: "Santri Berprestasi", value: "123" },
+    { label: "Lulusan Mubaligh", value: "85" },
+    { label: "Santri Berprestasi", value: "97" },
 ];
 
 export default function Statistik() {
