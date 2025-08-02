@@ -112,7 +112,7 @@ export default function Home({ url }) {
                                 />
                             </AnimatedContent>
 
-                            <FadeContent duration={2}>
+                            {/* <FadeContent duration={2}>
                                 <motion.img
                                     src="/images/particle1.png"
                                     alt="Partikel"
@@ -149,7 +149,7 @@ export default function Home({ url }) {
                                     }}
                                     className="absolute rounded-lg w-auto h-15 md:h-18 top-80 md:top-112 right-[-30px] md:right-20"
                                 />
-                            </FadeContent>
+                            </FadeContent> */}
                         </motion.div>
                     </div>
 
