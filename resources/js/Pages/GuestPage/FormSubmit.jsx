@@ -61,7 +61,7 @@ export default function FormSubmit(){
 useEffect(() => {
     const fetchKamar = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/tamu");
+            const res = await axios.get("https://ppmbki.ponpes.id/api/tamu");
             setKamarList(res.data.data);
         } catch (error) {
             console.error("Gagal fetch kamar:", error);
@@ -110,7 +110,7 @@ const handleSubmit = async (e) => {
     setTimeout(async () => {
         try {
             await axios.post(
-                `http://127.0.0.1:8000/api/tamu/${formData.id_layanan_tamu}/booking`,
+                `https://ppmbki.ponpes.id/api/tamu/${formData.id_layanan_tamu}/booking`,
                 {
                     nama_tamu: formData.nama_tamu,
                     phone: formData.phone,
