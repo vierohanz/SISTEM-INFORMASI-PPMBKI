@@ -63,7 +63,7 @@ export default function FormSubmit(){
             const fetchKamar = async () => {
                 try {
                     const res = await axios.get(
-                        "http://127.0.0.1:8000/api/tamu"
+                        "https://ppmbki.ponpes.id/api/tamu"
                     );
                     setKamarList(res.data.data);
                 } catch (error) {
