@@ -28,8 +28,8 @@ Route::get('/psb', [PSBController::class, 'index'])->name('psb.index');
 Route::get('/psb/latest', [PSBController::class, 'latest'])->name('psb.latest');
 Route::get('/psb/{id}', [PSBController::class, 'showAsId'])->name('psb.show');
 Route::post('/psb/{id}/pendaftaran', [PSBController::class, 'storePendaftaran']);
-
 //Layanan Tamu
 Route::get('/tamu', [TamuController::class, 'index'])->name('tamu.index');
 Route::get('/tamu/{id}', [TamuController::class, 'show'])->name('tamu.show');
 Route::post('/tamu/{id}/booking', [TamuController::class, 'store'])->name('booking.store');
+Route::get('/sewa', [TamuController::class, 'booking_kamar'])->name('booking.show');
