@@ -81,10 +81,10 @@ export default function Advertation() {
                 >
                     <div className="mt-12">
                         <button
-                            onClick={() => navigate("/psb")}
+                            // onClick={() => navigate("/psb")}
                             className="inline-flex items-center cursor-pointer font-Inter gap-2 bg-white text-emerald-700 px-6 py-3 rounded-full font-medium shadow-lg hover:scale-105 hover:bg-gray-100 transition duration-300"
                         >
-                            Daftar Sekarang
+                            Pendaftaran Tutup
                             <ArrowRight className="w-4 h-4" />
                         </button>
                     </div>
