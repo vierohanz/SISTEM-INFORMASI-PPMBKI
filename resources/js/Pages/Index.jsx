@@ -8,10 +8,13 @@ import Guest from "./GuestPage/Guest";
 import About from "./AboutPage/About";
 import MainEvent from "./EventPage/MainEvent";
 import MainArticle from "./ArticlePage/MainArticle";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Index() {
     return (
         <BrowserRouter>
+            <ToastContainer position="bottom-right" autoClose={3000} />
             <Routes>
                 <Route element={<MainLayout />}>
                     <Route path="/" element={<Home />} />

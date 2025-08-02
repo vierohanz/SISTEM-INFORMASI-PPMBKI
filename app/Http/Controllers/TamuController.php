@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TamuResources;
+use App\Models\booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -42,6 +43,27 @@ class TamuController extends Controller
             'success' => true,
             'message' => 'Detail kamar aktif berhasil diambil',
             'data' => new TamuResources((object) $tamu)
+        ]);
+    }
+
+    public function booking_kamar()
+    {
+        $bookings = DB::table('booking')
+        ->join('layanan_tamu', 'booking.id_layanan_tamu', '=', 'layanan_tamu.id')
+        ->whereNull('booking.deleted_at')
+        ->select(
+            'booking.id',
+            'layanan_tamu.nama as kamar',
+            'booking.nama_tamu',
+            'booking.tanggal_datang',
+            'booking.tanggal_keluar',
+            'booking.status'
+        )
+            ->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Sewa Kamar berhasil difetch',
+            'data' => $bookings
         ]);
     }
 
@@ -85,21 +107,30 @@ class TamuController extends Controller
         $data['id_layanan_tamu'] = $id;
         $data['status'] = 'Pending';
 
+        if ($data['kuantitas'] > $layanan->kapasitas) {
+            return response()->json([
+                'success' => false,
+                'message' => "Jumlah tamu melebihi kapasitas kamar ({$layanan->kapasitas}).",
+            ], 422);
+        }
+
         $overlap = DB::table('booking')
-            ->where('id_layanan_tamu', $id)
+        ->where('id_layanan_tamu', $id)
             ->whereNull('deleted_at')
+            ->whereIn('status', ['Pending', 'Diterima'])
             ->where(function ($query) use ($data) {
-                $query->whereDate('tanggal_datang', '<=', $data['tanggal_keluar'])
-                    ->whereDate('tanggal_keluar', '>=', $data['tanggal_datang']);
+                $query->whereDate('tanggal_datang', '<', $data['tanggal_keluar'])
+                ->whereDate('tanggal_keluar', '>', $data['tanggal_datang']);
             })
             ->exists();
 
         if ($overlap) {
             return response()->json([
                 'success' => false,
-                'message' => 'Layanan tamu sudah dibooking pada rentang tanggal tersebut',
+                'message' => 'Kamar sudah dibooking pada rentang tanggal tersebut.',
             ], 409);
         }
+
 
         DB::table('booking')->insert($data);
 
