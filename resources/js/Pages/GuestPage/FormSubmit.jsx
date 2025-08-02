@@ -113,7 +113,7 @@ export default function FormSubmit(){
             setTimeout(async () => {
                 try {
                     await axios.post(
-                        `http://127.0.0.1:8000/api/tamu/${formData.id_layanan_tamu}/booking`,
+                        `https://ppmbki.ponpes.id/api/tamu/${formData.id_layanan_tamu}/booking`,
                         {
                             nama_tamu: formData.nama_tamu,
                             phone: formData.phone,

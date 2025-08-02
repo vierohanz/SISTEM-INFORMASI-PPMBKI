@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function ListSewa() {
     const [events, setEvents] = useState([]);
     useState(() => {
-        fetch("http://127.0.0.1:8000/api/sewa")
+        fetch("https://ppmbki.ponpes.id/api/sewa")
             .then((res) => res.json())
             .then((data) => {
                 const mapped = data.data.map((item) => {
